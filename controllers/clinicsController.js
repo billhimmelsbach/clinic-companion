@@ -16,18 +16,18 @@ function index(req, res) {
 function create(req, res) {
   console.log('body', req.body);
 
-//TODO
+// TODO
 // FIX THIS BIZ
-//TODO
+// TODO
   // split at comma and remove and trailing space
   // genres = req.body.genres.split(',').map(function(item) { return item.trim(); } );
   // req.body.genres = genres;
   // console.log(genres);
 
-var cleanGenres = req.body.genres.split(',');
-cleanGenres = cleanGenres.map(function (word) {
-  return word.trim();
-});
+// var cleanGenres = req.body.genres.split(',');
+// cleanGenres = cleanGenres.map(function (word) {
+//   return word.trim();
+// });
 var newAlbum = req.body;
 newAlbum.genres = cleanGenres;
   db.Album.create(newAlbum, function(err, album) {
@@ -38,12 +38,14 @@ newAlbum.genres = cleanGenres;
 }
 
 function show(req, res) {
-  db.Album.findById(req.params.albumId, function(err, album) {
-		if (err) {
-			res.sendStatus(404);
-		}
-		res.json(album);
-	});
+  app.get('/api/clinics', function (req, res) {
+    // send all clinics as JSON response
+    db.Clinic.find().populate('location')
+      .exec(function(err, clinics) {
+        if (err) { return console.log("index error: " + err); }
+        res.json(clinics);
+    });
+  });
 }
 
 function destroy(req, res) {

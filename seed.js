@@ -6,7 +6,7 @@ var currentTime = new Date();
 var clinics_list = [
   {
     name: "Planned Parenthood - West Oakland",
-    address: "1682 7th St",
+    address1: "1682 7th St",
     address2: null,
     address3: null,
     city: "Oakland",
@@ -62,8 +62,23 @@ db.Location.remove({}, function(err, locations) {
       clinics_list.forEach(function (clinicData) {
         var clinic = new db.Clinic({
           title: clinicData.title,
+          name: clinicData.name,
+          address1: clinicData.address1,
+          address2: clinicData.address2,
+          address3: clinicData.address3,
+          city: clinicData.city,
+          state: clinicData.state,
+          zipcode: clinicData.zipcode,
+          phone_number: clinicData.phone_number,
+          costs: clinicData.costs,
+          email: clinicData.email ,
+          website: clinicData.website,
+          book_appointment: clinicData.appointment,
+          social_media: clinicData.social_media,
+          stories: clinicData.stories,
+          location: clinicData.location,
           image: clinicData.image,
-          releaseDate: clinicData.releaseDate
+          date_posted: clinicData.date_posted
         });
         db.Location.findOne({name: clinicData.location}, function (err, foundLocation) {
           console.log('found location ' + foundLocation.name + ' for clinic ' + clinic.title);

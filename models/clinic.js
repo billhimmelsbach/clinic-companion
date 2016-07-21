@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 var ClinicSchema = new Schema({
     _id: String,
 	  name: String,
-	  address : String,
+	  address1: String,
     address2: null,
     address3: null,
     city: String,
