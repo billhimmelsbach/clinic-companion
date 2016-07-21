@@ -1,61 +1,61 @@
 console.log("Sanity Check: JS is working!");
 var template;
-var $booksList;
-var allBooks = [];
+var $clinicsList;
+var allClinics = [];
 
 $(document).ready(function(){
 
-  $booksList = $('#bookTarget');
+  $clinicsList = $('#clinicTarget');
 
   // compile handlebars template
-  var source = $('#books-template').html();
+  var source = $('#clinics-template').html();
   template = Handlebars.compile(source);
 
   $.ajax({
     method: 'GET',
-    url: '/api/books',
+    url: '/api/clinics',
     success: handleSuccess,
     error: handleError
   });
 
-  $('#newBookForm').on('submit', function(e) {
+  $('#newClinicForm').on('submit', function(e) {
     e.preventDefault();
-    console.log('new book serialized', $(this).serializeArray());
+    console.log('new clinic serialized', $(this).serializeArray());
     $.ajax({
       method: 'POST',
-      url: '/api/books',
+      url: '/api/clinics',
       data: $(this).serializeArray(),
-      success: newBookSuccess,
-      error: newBookError
+      success: newClinicSuccess,
+      error: newClinicError
     });
   });
 
-  $booksList.on('click', '.deleteBtn', function() {
-    console.log('clicked delete button to', '/api/books/'+$(this).attr('data-id'));
+  $clinicsList.on('click', '.deleteBtn', function() {
+    console.log('clicked delete button to', '/api/clinics/'+$(this).attr('data-id'));
     $.ajax({
       method: 'DELETE',
-      url: '/api/books/'+$(this).attr('data-id'),
-      success: deleteBookSuccess,
-      error: deleteBookError
+      url: '/api/clinics/'+$(this).attr('data-id'),
+      success: deleteClinicSuccess,
+      error: deleteClinicError
     });
   });
 
-  $booksList.on('submit', '#addCharacterForm', function(e) {
+  $clinicsList.on('submit', '#addCharacterForm', function(e) {
     e.preventDefault();
     console.log('new characters');
     $.ajax({
       method: 'POST',
-      url: '/api/books/'+$(this).attr('data-id')+'/characters',
+      url: '/api/clinics/'+$(this).attr('data-id')+'/characters',
       data: $(this).serializeArray(),
       success: newCharacterSuccess,
       error: newCharacterError
     });
   });
 
-  $booksList.on('click', '.deleteCharacter', function() {
+  $clinicsList.on('click', '.deleteCharacter', function() {
     $.ajax({
       method: 'DELETE',
-      url: '/api/books/'+$(this).data('bookid')+'/characters/'+$(this).data('charid'),
+      url: '/api/clinics/'+$(this).data('clinicid')+'/characters/'+$(this).data('charid'),
       success: deleteCharacterSuccess
     });
   });
@@ -66,62 +66,62 @@ $(document).ready(function(){
 // note: we empty and re-render the collection each time our post data changes
 function render () {
   // empty existing posts from view
-  $booksList.empty();
+  $clinicsList.empty();
 
-  // pass `allBooks` into the template function
-  var booksHtml = template({ books: allBooks });
+  // pass `allClinics` into the template function
+  var clinicsHtml = template({ clinics: allClinics });
 
   // append html to the view
-  $booksList.append(booksHtml);
+  $clinicsList.append(clinicsHtml);
 }
 
 function handleSuccess(json) {
-  allBooks = json;
+  allClinics = json;
   render();
 }
 
 function handleError(e) {
   console.log('uh oh');
-  $('#bookTarget').text('Failed to load books, is the server working?');
+  $('#clinicTarget').text('Failed to load clinics, is the server working?');
 }
 
-function newBookSuccess(json) {
-  $('#newBookForm input').val('');
-  allBooks.push(json);
+function newClinicSuccess(json) {
+  $('#newClinicForm input').val('');
+  allClinics.push(json);
   render();
 }
 
-function newBookError() {
-  console.log('newbook error!');
+function newClinicError() {
+  console.log('newclinic error!');
 }
 
-function deleteBookSuccess(json) {
-  var book = json;
+function deleteClinicSuccess(json) {
+  var clinic = json;
   console.log(json);
-  var bookId = book._id;
-  console.log('delete book', bookId);
-  // find the book with the correct ID and remove it from our allBooks array
-  for(var index = 0; index < allBooks.length; index++) {
-    if(allBooks[index]._id === bookId) {
-      allBooks.splice(index, 1);
-      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
+  var clinicId = clinic._id;
+  console.log('delete clinic', clinicId);
+  // find the clinic with the correct ID and remove it from our allClinics array
+  for(var index = 0; index < allClinics.length; index++) {
+    if(allClinics[index]._id === clinicId) {
+      allClinics.splice(index, 1);
+      break;  // we found our clinic - no reason to keep searching (this is why we didn't use forEach)
     }
   }
   render();
 }
 
-function deleteBookError() {
-  console.log('deletebook error!');
+function deleteClinicError() {
+  console.log('deleteclinic error!');
 }
 
 function newCharacterSuccess(json) {
-  var book = json;
-  var bookId = book._id;
-  // find the book with the correct ID and update it
-  for(var index = 0; index < allBooks.length; index++) {
-    if(allBooks[index]._id === bookId) {
-      allBooks[index] = book;
-      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
+  var clinic = json;
+  var clinicId = clinic._id;
+  // find the clinic with the correct ID and update it
+  for(var index = 0; index < allClinics.length; index++) {
+    if(allClinics[index]._id === clinicId) {
+      allClinics[index] = clinic;
+      break;  // we found our clinic - no reason to keep searching (this is why we didn't use forEach)
     }
   }
   render();
@@ -132,13 +132,13 @@ function newCharacterError() {
 }
 
 function deleteCharacterSuccess(json) {
-  var book = json;
-  var bookId = book._id;
-  // find the book with the correct ID and update it
-  for(var index = 0; index < allBooks.length; index++) {
-    if(allBooks[index]._id === bookId) {
-      allBooks[index] = book;
-      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
+  var clinic = json;
+  var clinicId = clinic._id;
+  // find the clinic with the correct ID and update it
+  for(var index = 0; index < allClinics.length; index++) {
+    if(allClinics[index]._id === clinicId) {
+      allClinics[index] = clinic;
+      break;  // we found our clinic - no reason to keep searching (this is why we didn't use forEach)
     }
   }
   render();

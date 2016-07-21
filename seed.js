@@ -3,58 +3,58 @@
 
 var db = require('./models');
 
-var books_list = [
+var clinics_list = [
   {
   title: "To Kill a Mockingbird",
-  author: "Harper Lee",
+  location: "Harper Lee",
   image: "https://s3-us-west-2.amazonaws.com/sandboxapi/to_kill_a_mockingbird.jpg",
   releaseDate: "July 11, 1960"
   },
   {
   title: "The Great Gatsby",
-  author: "F Scott Fitzgerald",
+  location: "F Scott Fitzgerald",
   image: "https://s3-us-west-2.amazonaws.com/sandboxapi/great_gatsby.jpg",
   releaseDate: "April 10, 1925"
   },
   {
   title: "Les Miserables",
-  author: "Victor Hugo",
+  location: "Victor Hugo",
   image: "https://s3-us-west-2.amazonaws.com/sandboxapi/les_miserables.jpg",
   releaseDate: "Unknown 1862"
   },
   {
   title: "Around the World in 80 Days",
-  author: "Jules Verne",
+  location: "Jules Verne",
   image: "https://s3-us-west-2.amazonaws.com/sandboxapi/around_the_world_in_80_days.jpg",
   releaseDate: "January 30, 1873"
   },
   {
   title: "Lean In",
-  author: "Sheryl Sandberg",
+  location: "Sheryl Sandberg",
   image: "https://s3-us-west-2.amazonaws.com/sandboxapi/lean_in.jpg",
   releaseDate: "March 11, 2013"
   },
   {
   title: "The Four Hour Workweek",
-  author: "Tim Ferriss",
+  location: "Tim Ferriss",
   image: "https://s3-us-west-2.amazonaws.com/sandboxapi/four_hour_work_week.jpg",
   releaseDate: "April 1, 2007"
   },
   {
   title: "Of Mice and Men",
-  author: "John Steinbeck",
+  location: "John Steinbeck",
   image: "https://s3-us-west-2.amazonaws.com/sandboxapi/of_mice_and_men.jpg",
   releaseDate: "Unknown 1937"
   },
   {
   title: "Romeo and Juliet",
-  author: "William Shakespeare",
+  location: "William Shakespeare",
   image: "https://s3-us-west-2.amazonaws.com/sandboxapi/romeo_and_juliet.jpg",
   releaseDate: "Unknown 1597"
   }
 ];
 
-var authors_list = [
+var locations_list = [
   {
     name: "Harper Lee",
     alive: false
@@ -89,37 +89,37 @@ var authors_list = [
   }
 ];
 
-db.Author.remove({}, function(err, authors) {
-  console.log('removed all authors');
-  db.Author.create(authors_list, function(err, authors){
+db.Location.remove({}, function(err, locations) {
+  console.log('removed all locations');
+  db.Location.create(locations_list, function(err, locations){
     if (err) {
       console.log(err);
       return;
     }
-    console.log('recreated all authors');
-    console.log("created", authors.length, "authors");
+    console.log('recreated all locations');
+    console.log("created", locations.length, "locations");
 
 
-    db.Book.remove({}, function(err, books){
-      console.log('removed all books');
-      books_list.forEach(function (bookData) {
-        var book = new db.Book({
-          title: bookData.title,
-          image: bookData.image,
-          releaseDate: bookData.releaseDate
+    db.Clinic.remove({}, function(err, clinics){
+      console.log('removed all clinics');
+      clinics_list.forEach(function (clinicData) {
+        var clinic = new db.Clinic({
+          title: clinicData.title,
+          image: clinicData.image,
+          releaseDate: clinicData.releaseDate
         });
-        db.Author.findOne({name: bookData.author}, function (err, foundAuthor) {
-          console.log('found author ' + foundAuthor.name + ' for book ' + book.title);
+        db.Location.findOne({name: clinicData.location}, function (err, foundLocation) {
+          console.log('found location ' + foundLocation.name + ' for clinic ' + clinic.title);
           if (err) {
             console.log(err);
             return;
           }
-          book.author = foundAuthor;
-          book.save(function(err, savedBook){
+          clinic.location = foundLocation;
+          clinic.save(function(err, savedClinic){
             if (err) {
               return console.log(err);
             }
-            console.log('saved ' + savedBook.title + ' by ' + foundAuthor.name);
+            console.log('saved ' + savedClinic.title + ' by ' + foundLocation.name);
           });
         });
       });

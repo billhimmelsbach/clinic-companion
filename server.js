@@ -35,111 +35,111 @@ app.get('/', function (req, res) {
   res.sendFile('views/index.html' , { root : __dirname});
 });
 
-// get all books
-app.get('/api/books', function (req, res) {
-  // send all books as JSON response
-  db.Book.find().populate('author')
-    .exec(function(err, books) {
+// get all clinics
+app.get('/api/clinics', function (req, res) {
+  // send all clinics as JSON response
+  db.Clinic.find().populate('location')
+    .exec(function(err, clinics) {
       if (err) { return console.log("index error: " + err); }
-      res.json(books);
+      res.json(clinics);
   });
 });
 
-// get one book
-app.get('/api/books/:id', function (req, res) {
-  db.Book.findOne({_id: req.params.id }, function(err, data) {
+// get one clinic
+app.get('/api/clinics/:id', function (req, res) {
+  db.Clinic.findOne({_id: req.params.id }, function(err, data) {
     res.json(data);
   });
 });
 
-// create new book
-app.post('/api/books', function (req, res) {
-  // create new book with form data (`req.body`)
-  var newBook = new db.Book({
+// create new clinic
+app.post('/api/clinics', function (req, res) {
+  // create new clinic with form data (`req.body`)
+  var newClinic = new db.Clinic({
     title: req.body.title,
     image: req.body.image,
     releaseDate: req.body.releaseDate,
   });
-  // find the author from req.body
-  db.Author.findOne({name: req.body.author}, function(err, author){
+  // find the location from req.body
+  db.Location.findOne({name: req.body.location}, function(err, location){
     if (err) {
       return console.log(err);
     }
-    // add this author to the book
-    newBook.author = author;
+    // add this location to the clinic
+    newClinic.location = location;
 
 
-    // save newBook to database
-    newBook.save(function(err, book){
+    // save newClinic to database
+    newClinic.save(function(err, clinic){
       if (err) {
         return console.log("save error: " + err);
       }
-      console.log("saved ", book.title);
-      // send back the book!
-      res.json(book);
+      console.log("saved ", clinic.title);
+      // send back the clinic!
+      res.json(clinic);
     });
   });
 });
 
-// delete book
-app.delete('/api/books/:id', function (req, res) {
-  // get book id from url params (`req.params`)
-  console.log('books delete', req.params);
-  var bookId = req.params.id;
-  // find the index of the book we want to remove
-  db.Book.findOneAndRemove({ _id: bookId })
-    .populate('author')
-    .exec(function (err, deletedBook) {
-    res.json(deletedBook);
+// delete clinic
+app.delete('/api/clinics/:id', function (req, res) {
+  // get clinic id from url params (`req.params`)
+  console.log('clinics delete', req.params);
+  var clinicId = req.params.id;
+  // find the index of the clinic we want to remove
+  db.Clinic.findOneAndRemove({ _id: clinicId })
+    .populate('location')
+    .exec(function (err, deletedClinic) {
+    res.json(deletedClinic);
   });
 });
 
 
-// Create a character associated with a book
-app.post('/api/books/:book_id/characters', function (req, res) {
-  // Get book id from url params (`req.params`)
-  var bookId = req.params.book_id;
-  db.Book.findById(bookId)
-    .populate('author')
-    .exec(function(err, foundBook) {
-      console.log(foundBook);
+// Create a character associated with a clinic
+app.post('/api/clinics/:clinic_id/characters', function (req, res) {
+  // Get clinic id from url params (`req.params`)
+  var clinicId = req.params.clinic_id;
+  db.Clinic.findById(clinicId)
+    .populate('location')
+    .exec(function(err, foundClinic) {
+      console.log(foundClinic);
       if (err) {
         res.status(500).json({error: err.message});
-      } else if (foundBook === null) {
-        // Is this the same as checking if the foundBook is undefined?
-        res.status(404).json({error: "No Book found by this ID"});
+      } else if (foundClinic === null) {
+        // Is this the same as checking if the foundClinic is undefined?
+        res.status(404).json({error: "No Clinic found by this ID"});
       } else {
         // push character into characters array
-        foundBook.characters.push(req.body);
-        // save the book with the new character
-        foundBook.save();
-        res.status(201).json(foundBook);
+        foundClinic.characters.push(req.body);
+        // save the clinic with the new character
+        foundClinic.save();
+        res.status(201).json(foundClinic);
       }
     });
 });
 
 
-// Delete a character associated with a book
-app.delete('/api/books/:book_id/characters/:character_id', function (req, res) {
-  // Get book id from url params (`req.params`)
-  var bookId = req.params.book_id;
+// Delete a character associated with a clinic
+app.delete('/api/clinics/:clinic_id/characters/:character_id', function (req, res) {
+  // Get clinic id from url params (`req.params`)
+  var clinicId = req.params.clinic_id;
   var characterId = req.params.character_id;
-  db.Book.findById(bookId)
-    .populate('author')
-    .exec(function(err, foundBook) {
+  db.Clinic.findById(clinicId)
+    .populate('location')
+    .exec(function(err, foundClinic) {
       if (err) {
         res.status(500).json({error: err.message});
-      } else if (foundBook === null) {
-        res.status(404).json({error: "No Book found by this ID"});
+      } else if (foundClinic === null) {
+        res.status(404).json({error: "No Clinic found by this ID"});
       } else {
         // find the character by id
-        var deletedCharacter = foundBook.characters.id(characterId);
+        var deletedCharacter = foundClinic.characters.id(characterId);
         // delete the found character
         deletedCharacter.remove();
-        // save the found book with the character deleted
-        foundBook.save();
-        // send back the found book without the character
-        res.json(foundBook);
+        // save the found clinic with the character deleted
+        foundClinic.save();
+        // send back the found clinic without the character
+        res.json(foundClinic);
       }
     });
 });

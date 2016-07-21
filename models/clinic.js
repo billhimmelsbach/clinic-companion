@@ -1,18 +1,18 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
-  Author = require('./author');
+  Location = require('./location');
 
 var CharacterSchema = new Schema({
   name: String
 });
 
-var BookSchema = new Schema({
+var ClinicSchema = new Schema({
      title: String,
-     author: {type: Schema.Types.ObjectId, ref: 'Author'},
+     location: {type: Schema.Types.ObjectId, ref: 'Location'},
      image: String,
      releaseDate: String,
      characters: [CharacterSchema]
 });
 
-var Book = mongoose.model('Book', BookSchema);
-module.exports = Book;
+var Clinic = mongoose.model('Clinic', ClinicSchema);
+module.exports = Clinic;

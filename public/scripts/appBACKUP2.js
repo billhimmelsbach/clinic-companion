@@ -1,40 +1,40 @@
 console.log("Sanity Check: JS is working!");
 var template;
-var $booksList;
-var allBooks = [];
+var $clinicsList;
+var allClinics = [];
 
 $(document).ready(function(){
 
-  $booksList = $('#bookTarget');
+  $clinicsList = $('#clinicTarget');
 
   // compile handlebars template
-  var source = $('#books-template').html();
+  var source = $('#clinics-template').html();
   template = Handlebars.compile(source);
 
   $.ajax({
     method: 'GET',
-    url: '/api/books',
+    url: '/api/clinics',
     success: handleSuccess,
     error: handleError
   });
 
-  $('#newBookForm').on('submit', function(e) {
+  $('#newClinicForm').on('submit', function(e) {
     e.preventDefault();
     $.ajax({
       method: 'POST',
-      url: '/api/books',
+      url: '/api/clinics',
       data: $(this).serialize(),
-      success: newBookSuccess,
-      error: newBookError
+      success: newClinicSuccess,
+      error: newClinicError
     });
   });
 
-  $booksList.on('click', '.deleteBtn', function() {
+  $clinicsList.on('click', '.deleteBtn', function() {
     $.ajax({
       method: 'DELETE',
-      url: '/api/books/'+$(this).attr('data-id'),
-      success: deleteBookSuccess,
-      error: deleteBookError
+      url: '/api/clinics/'+$(this).attr('data-id'),
+      success: deleteClinicSuccess,
+      error: deleteClinicError
     });
   });
 
@@ -44,49 +44,49 @@ $(document).ready(function(){
 // note: we empty and re-render the collection each time our post data changes
 function render () {
   // empty existing posts from view
-  $booksList.empty();
+  $clinicsList.empty();
 
-  // pass `allBooks` into the template function
-  var booksHtml = template({ books: allBooks });
+  // pass `allClinics` into the template function
+  var clinicsHtml = template({ clinics: allClinics });
 
   // append html to the view
-  $booksList.append(booksHtml);
+  $clinicsList.append(clinicsHtml);
 }
 
 function handleSuccess(json) {
-  allBooks = json;
+  allClinics = json;
   render();
 }
 
 function handleError(e) {
   console.log('uh oh');
-  $('#bookTarget').text('Failed to load books, is the server working?');
+  $('#clinicTarget').text('Failed to load clinics, is the server working?');
 }
 
-function newBookSuccess(json) {
-  $('#newBookForm input').val('');
-  allBooks.push(json);
+function newClinicSuccess(json) {
+  $('#newClinicForm input').val('');
+  allClinics.push(json);
   render();
 }
 
-function newBookError() {
+function newClinicError() {
 
 }
 
-function deleteBookSuccess(json) {
-  var book = json;
-  var bookId = book._id;
+function deleteClinicSuccess(json) {
+  var clinic = json;
+  var clinicId = clinic._id;
 
-  // find the book with the correct ID and remove it from our allBooks array
-  for(var index = 0; index < allBooks.length; index++) {
-    if(allBooks[index]._id === bookId) {
-      allBooks.splice(index, 1);
-      break;  // we found our book - no reason to keep searching (this is why we didn't use forEach)
+  // find the clinic with the correct ID and remove it from our allClinics array
+  for(var index = 0; index < allClinics.length; index++) {
+    if(allClinics[index]._id === clinicId) {
+      allClinics.splice(index, 1);
+      break;  // we found our clinic - no reason to keep searching (this is why we didn't use forEach)
     }
   }
   render();
 }
 
-function deleteBookError() {
+function deleteClinicError() {
 
 }
