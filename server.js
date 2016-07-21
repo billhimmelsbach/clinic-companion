@@ -22,11 +22,22 @@ app.use(express.static('public'));
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var moment = require('moment');
+
+moment().format();
+
 
 ////////////////////
 //  ROUTES
 ///////////////////
 
+app.get('/api', controllers.api.index);
+app.get('/api/albums', controllers.albums.index);
+app.get('/api/albums/:albumId', controllers.albums.show);
+app.get('/api/albums/:albumId/songs', controllers.songs.show);
+app.post('/api/albums', controllers.albums.create);
+app.post('/api/albums/:albumId/songs', controllers.songs.create);
+app.delete('/api/albums/:albumId', controllers.albums.destroy);
 
 
 
