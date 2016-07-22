@@ -1,8 +1,8 @@
 function index(req, res) {
   res.json({
-    message: "Welcome to tunely!",
-    documentation_url: "https://github.com/tgaff/tunely/api.md",
-    base_url: "http://tunely.herokuapp.com",
+    message: "Clinic Companion!",
+    documentation_url: "https://github.com/billhimmelsbach/clinic-companion/blob/master/README.md",
+    base_url: "",
     endpoints: [
       {method: "GET", path: "/api", description: "Describes available endpoints"}
     ]

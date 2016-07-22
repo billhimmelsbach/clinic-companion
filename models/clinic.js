@@ -1,13 +1,12 @@
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
-  Location = require('./location');
+Schema = mongoose.Schema;
+  // Location = require('./location');
 
 var ClinicSchema = new Schema({
-    _id: String,
 	  name: String,
 	  address1: String,
-    address2: null,
-    address3: null,
+    address2: String,
+    address3: String,
     city: String,
     state: String,
     zipcode: String,
@@ -17,8 +16,8 @@ var ClinicSchema = new Schema({
     website: String,
     book_appointment: String,
     social_media: String,
-    stories: {type: Schema.Types.ObjectId, ref: 'Story'},
-    location: {type: Schema.Types.ObjectId, ref: 'Location'},
+    // stories: {type: Schema.Types.ObjectId, ref: 'Story'},
+    // location: {type: Schema.Types.ObjectId, ref: 'Location'},
     image: String,
     date_posted: String,
 });

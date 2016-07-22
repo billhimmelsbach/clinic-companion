@@ -8,7 +8,8 @@
 
 //require express in our app
 var express = require('express'),
-  bodyParser = require('body-parser');
+bodyParser = require('body-parser'),
+moment = require('moment');
 
 // connect to db models
 var db = require('./models');
@@ -17,27 +18,30 @@ var db = require('./models');
 var app = express();
 
 // serve static files in public
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var moment = require('moment');
-
 moment().format();
+
+var controllers = require('./controllers');
 
 
 ////////////////////
 //  ROUTES
 ///////////////////
+app.get('/', function homepage (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
 
 app.get('/api', controllers.api.index);
 app.get('/api/clinics', controllers.clinics.index);
-// app.get('/api/albums/:albumId', controllers.albums.show);
+app.get('/api/clinics/:clinicId', controllers.clinics.show);
 // app.get('/api/albums/:albumId/songs', controllers.songs.show);
-// app.post('/api/albums', controllers.albums.create);
+app.post('/api/clinics', controllers.clinics.create);
 // app.post('/api/albums/:albumId/songs', controllers.songs.create);
-// app.delete('/api/albums/:albumId', controllers.albums.destroy);
+app.delete('/api/clinics/:clinicId', controllers.clinics.destroy);
 
 
 //
@@ -157,6 +161,6 @@ app.get('/api/clinics', controllers.clinics.index);
 //
 //
 //
-// app.listen(process.env.PORT || 3000, function () {
-//   console.log('Example app listening at http://localhost:3000/');
-// });
+app.listen(process.env.PORT || 3000, function () {
+  console.log('Clinic Companion listening at http://localhost:3000/');
+});
