@@ -9,7 +9,11 @@
 //require express in our app
 var express = require('express'),
 bodyParser = require('body-parser'),
-moment = require('moment');
+moment = require('moment'),
+cookieParser = require('cookie-parser'),
+session = require('express-session'),
+passport = require('passport'),
+LocalStrategy = require('passport-local').Strategy;
 
 // connect to db models
 var db = require('./models');
@@ -27,6 +31,18 @@ moment().format();
 
 var controllers = require('./controllers');
 
+app.use(cookieParser());
+app.use(session({
+  secret: 'strongenoughtobearthechildrenthengetbacktobusiness1',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 ////////////////////
 //  ROUTES
