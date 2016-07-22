@@ -4,6 +4,14 @@
 
 var db = require('../models');
 
+function create(req, res) {
+  var newClinic = req.body;
+  db.Clinic.create(newClinic, function (err, newClinic) {
+    if (err) {res.sendStatus(404);}
+    res.json(newClinic);
+  });
+}
+
 // function create(req, res) {
 //   console.log('body', req.body);
 //
@@ -32,7 +40,7 @@ function index(req, res) {
   db.Clinic.find({})
     // .populate('location')
     .exec(function(err, clinics) {
-        if (err) { return console.log("index error: " + err); }
+        if (err) { res.sendStatus(404); }
         res.json(clinics);
     });
 }
@@ -41,8 +49,7 @@ function show(req, res) {
   db.Clinic.findById(req.params.clinicId)
     // .populate('location')
     .exec(function(err, clinic) {
-        if (err) { return console.log("index error: " + err); }
-        console.log('interesting');
+        if (err) { res.sendStatus(404); }
         res.json(clinic);
     });
 }
@@ -50,7 +57,7 @@ function show(req, res) {
 
 function destroy(req, res) {
   db.Clinic.findOneAndRemove({_id: req.params.clinicId})
-    .populate('location')
+    // .populate('location')
     .exec(function(err, clinic){
 		if (err) {
 			res.sendStatus(404);
