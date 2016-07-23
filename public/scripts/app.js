@@ -15,16 +15,19 @@ $('.modal-trigger').leanModal();
       // $('#songModal').data('album-id', currentAlbumId);
       // $('.modal').modal();
   });
-});
 
-$('body').on('click', '#SubmitNewClinicBtn', function(event) {
+
+
+$('#newClinicForm form').on('submit', function(event) {
   event.preventDefault();
   console.log("test");
   var formData = $(this).serialize();
+  console.log(formData);
   $.post('/api/clinics', formData, function(clinic) {
     // renderAlbum(clinic);  //render the server's response
   });
   $(this).trigger("reset");
+});
 });
 //   $clinicsList = $('#clinicTarget');
 //
