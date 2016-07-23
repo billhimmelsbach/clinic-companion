@@ -126,6 +126,7 @@ app.put('/api/clinics/:clinicId', controllers.clinics.update);
 app.post('/api/clinics', controllers.clinics.create);
 // app.post('/api/albums/:albumId/songs', controllers.songs.create);
 app.delete('/api/clinics/:clinicId', controllers.clinics.destroy);
+// app.get('/api/locations/:locationId', controllers.clinics.findNearest);
 
 
 //
