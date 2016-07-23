@@ -21,16 +21,14 @@ function geocodeAddress(geocoder, resultsMap) {
     loc[0]=results[0].geometry.location.lat();
     loc[1]=results[0].geometry.location.lng();
     console.log( loc ); // the place where loc contains geocoded coordinates
-    var start_coord =  {
-      lng: loc[0],
-      lat: loc[1],
-    };
-    console.log(start_coord);
+    $.get('/api/locations?longitude=' + loc[0] +'&latitude='+loc[1]).success(function (clinicsNearby) {
+      console.log(clinicsNearby);
       resultsMap.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
         map: resultsMap,
         position: results[0].geometry.location
       });
+    });
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
