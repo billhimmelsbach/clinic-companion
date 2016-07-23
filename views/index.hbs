@@ -21,10 +21,46 @@
 </head>
 
 <body>
-    <script type="text/javascript">
-        window.user = {{{user}}};
-        var user = window.user;
-    </script>
+  <div id="floating-panel">
+    <input id="address" type="textbox" value="Sydney, NSW">
+    <input id="submit" type="button" value="Geocode">
+  </div>
+  <div id="map"></div>
+  <script>
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: {lat: -34.397, lng: 150.644}
+      });
+      var geocoder = new google.maps.Geocoder();
+
+      document.getElementById('submit').addEventListener('click', function() {
+        geocodeAddress(geocoder, map);
+      });
+    }
+
+    function geocodeAddress(geocoder, resultsMap) {
+      var loc=[];
+      var address = document.getElementById('address').value;
+      geocoder.geocode({'address': address}, function(results, status) {
+        if (status === google.maps.GeocoderStatus.OK) {
+        loc[0]=results[0].geometry.location.lat();
+        loc[1]=results[0].geometry.location.lng();
+        console.log( loc ); // the place where loc contains geocoded coordinates
+          resultsMap.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+            map: resultsMap,
+            position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
+  </script>
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkucwHjlesE88fzV0H4Dgn-S4JeIiS9XA&callback=initMap">
+  </script>
 
     <!-- Modal Trigger -->
     <a class="waves-effect waves-light btn modal-trigger modal-test right" href="#modalNewClinic">Admin</a>
@@ -64,7 +100,6 @@
         </form>
         </section>
     </div>
-    <div>
 </body>
 
 </html>
