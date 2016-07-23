@@ -4,10 +4,10 @@ var $clinicsList;
 var allClinics = [];
 
 $(document).ready(function(){
-
+$('.modal-trigger').leanModal();
   $('.modal-test').on('click', function(e) {
       console.log('add-clinic clicked!');
-      $('.modal-trigger').leanModal();
+
       // var id= $(this).closest('.album').data('album-id'); // "5665ff1678209c64e51b4e7b"
       // console.log('id',id);
       // console.log(id);
