@@ -27,6 +27,7 @@ $('#newClinicForm form').on('submit', function(event) {
     // renderAlbum(clinic);  //render the server's response
   });
   $(this).trigger("reset");
+  $('#modalNewClinic').closeModal();
 });
 });
 //   $clinicsList = $('#clinicTarget');
