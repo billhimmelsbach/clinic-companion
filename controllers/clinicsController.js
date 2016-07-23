@@ -20,7 +20,7 @@ function findNearest(req, res, next) {
     coords[1] = req.query.lat || 0;
 
     // find a location
-    Location.find({
+    db.Clinic.find({
       loc: {
         $near: coords,
         $maxDistance: maxDistance

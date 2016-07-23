@@ -4,57 +4,87 @@
 //
 // var db = require('../models');
 //
+// function findNearest(req, res, next) {
+//     var limit = req.query.limit || 10;
+//
+//     // get the max distance or set it to 8 kilometers
+//     var maxDistance = req.query.distance || 8;
+//
+//     // we need to convert the distance to radians
+//     // the raduis of Earth is approximately 6371 kilometers
+//     maxDistance /= 6371;
+//
+//     // get coordinates [ <longitude> , <latitude> ]
+//     var coords = [];
+//     coords[0] = req.query.long || 0;
+//     coords[1] = req.query.lat || 0;
+//
+//     // find a location
+//     Location.find({
+//       loc: {
+//         $near: coords,
+//         $maxDistance: maxDistance
+//       }
+//     }).limit(limit).exec(function(err, locations) {
+//       if (err) {
+//         return res.json(500, err);
+//       }
+//
+//       res.json(200, locations);
+//     });
+//   }
 //
 //
-// // GET /api/songs
-// function index(req, res) {
-//   db.Song.find({}, function(err, allSongs) {
-//     res.json(allSongs);
+// function create(req, res) {
+//   var newLocation = req.body;
+//   db.Location.create(newLocation, function (err, newLocation) {
+//     if (err) {res.sendStatus(404);}
+//     res.json(newLocation);
 //   });
 // }
 //
-//
-// //create
-// function create(req, res) {
-//   console.log("HAAAALP");
-//   // console.log(newSong);
-//   var albumId = req.params.albumId;
-//   var songInfo= req.body;
-//   console.log(albumId);
-//   console.log(songInfo);
-//   db.Song.create(songInfo, function(err, songReturn) {
-//     if (err) { console.log('error', err); }
-//     console.log(songReturn);
-//   db.Album.findById(albumId, function(err, albumReturn) {
-// 		if (err) {
-// 			res.sendStatus(404);
-// 		}
-//   console.log(albumReturn);
-//   console.log(songReturn);
-//   albumReturn.songs.push(songReturn);
-//   console.log(albumReturn);
-//   console.log(songReturn);
-//   albumReturn.save(function(err, finalAlbum) {
-//     if (err) {
-//       res.sendStatus(404);
-//     }
-//   res.json(songReturn);
-//   });
-// 	});
+// function index(req, res) {
+//   // if (req.user!=="admin") {
+//   //  return res.sendStatus(401);
+//   // }
+//   db.Location.find({})
+//     // .populate('location')
+//     .exec(function(err, locations) {
+//         if (err) { res.sendStatus(404); }
+//         res.json(locations);
 //     });
 // }
 //
 // function show(req, res) {
-//   // FILL ME IN !
+//   db.Location.findById(req.params.locationId)
+//     // .populate('location')
+//     .exec(function(err, location) {
+//         if (err) { res.sendStatus(404); }
+//         res.json(location);
+//     });
 // }
 //
+//
 // function destroy(req, res) {
-//   // FILL ME IN !
+//   db.Location.findOneAndRemove({_id: req.params.locationId})
+//     // .populate('location')
+//     .exec(function(err, location){
+// 		if (err) {
+// 			res.sendStatus(404);
+// 		}
+// 		res.json(location);
+// 	});
 // }
 //
 // function update(req, res) {
-//   // FILL ME IN !
+//   db.Location.findByIdAndUpdate(req.params.locationId, req.body, {new: true}, function(err, location) {
+//   if (err) {
+// 		res.sendStatus(404);
+// 		}
+// 		res.json(location);
+// 	});
 // }
+//
 //
 //
 // // export public methods here
@@ -63,5 +93,7 @@
 //   create: create,
 //   show: show,
 //   destroy: destroy,
-//   update: update
+//   update: update,
+//   findNearest: findNearest
+//
 // };

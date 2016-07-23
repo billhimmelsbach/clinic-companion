@@ -20,9 +20,9 @@ var ClinicSchema = new Schema({
     website: String,
     book_appointment: String,
     social_media: String,
-		location1: {
-    	type: Array,  //long, lat
-    	// index: '2d'
+		loc: {
+    	type: [Number],  //long, lat
+    	index: '2d'
 		},
     // stories: {type: Schema.Types.ObjectId, ref: 'Story'},
     // location: {type: Schema.Types.ObjectId, ref: 'Location'},

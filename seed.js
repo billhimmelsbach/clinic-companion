@@ -3,6 +3,16 @@
 
 var db = require('./models');
 var currentTime = new Date();
+// var locations_list = [
+//   {
+//     name: Test,
+//     loc: {
+//       type: [Number],
+//       index: '2d'
+//     }
+//   }
+// ];
+
 var clinics_list = [
   {
     name: "Planned Parenthood - West Oakland",
@@ -18,9 +28,10 @@ var clinics_list = [
     website: "https://www.plannedparenthood.org/health-center/california/oakland/94607/west-oakland-4090-90130?utm_campaign=west-oakland-health-center&utm_medium=organic&utm_source=local-listing",
     book_appointment: "https://docasap.com/center/209315/-1/0/0/0/PPFA/9390684/0/0",
     social_media: "",
-    location1: {
-      type: [37.81391037, -122.290908],  //long, lat
-		},
+    loc: [
+      23.600800037384033,
+      46.76758746952729
+    ],
     // stories: {type: Schema.Types.ObjectId, ref: 'Story'},
     // location: {type: Schema.Types.ObjectId, ref: 'Location'},
     image: "",
@@ -59,7 +70,9 @@ var locations_list = [];
 //       return;
 //     }
 //     console.log('recreated all locations');
-    // console.log("created", locations.length, "locations");
+//     console.log("created", locations.length, "locations");
+//   });
+// });
 
 
 db.Clinic.remove({}, function(err, clinics){
@@ -79,7 +92,7 @@ db.Clinic.remove({}, function(err, clinics){
       website: clinicData.website,
       book_appointment: clinicData.appointment,
       social_media: clinicData.social_media,
-      location1:clinicData.location1,
+      loc:clinicData.loc,
       stories: clinicData.stories,
       image: clinicData.image,
       date_posted: clinicData.date_posted
