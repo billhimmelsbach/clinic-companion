@@ -1,6 +1,10 @@
 // This file allows us to seed our application with data
 // simply run: `node seed.js` from the root of this project folder.
 
+//TODO
+//Are they open now?
+//TODO
+
 var db = require('./models');
 var currentTime = new Date();
 // var locations_list = [
@@ -23,6 +27,29 @@ var clinics_list = [
     state: "CA",
     zipcode: "94607",
     phone_number: "510-300-3800",
+    costs: "",
+    email: "",
+    website: "https://www.plannedparenthood.org/health-center/california/oakland/94607/west-oakland-4090-90130?utm_campaign=west-oakland-health-center&utm_medium=organic&utm_source=local-listing",
+    book_appointment: "https://docasap.com/center/209315/-1/0/0/0/PPFA/9390684/0/0",
+    social_media: "",
+    loc: [
+      23.600800037384033,
+      46.76758746952729
+    ],
+    // stories: {type: Schema.Types.ObjectId, ref: 'Story'},
+    // location: {type: Schema.Types.ObjectId, ref: 'Location'},
+    image: "",
+    date_posted: currentTime,
+  },
+  {
+    name: "Family Planning Specialists",
+    address1: "400 29th St.",
+    address2: "#301",
+    address3: "",
+    city: "Oakland",
+    state: "CA",
+    zipcode: "94609",
+    phone_number: "510-899-7099",
     costs: "",
     email: "",
     website: "https://www.plannedparenthood.org/health-center/california/oakland/94607/west-oakland-4090-90130?utm_campaign=west-oakland-health-center&utm_medium=organic&utm_source=local-listing",
@@ -90,7 +117,7 @@ db.Clinic.remove({}, function(err, clinics){
       costs: clinicData.costs,
       email: clinicData.email ,
       website: clinicData.website,
-      book_appointment: clinicData.appointment,
+      book_appointment: clinicData.book_appointment,
       social_media: clinicData.social_media,
       loc:clinicData.loc,
       stories: clinicData.stories,
