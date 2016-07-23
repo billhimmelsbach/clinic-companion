@@ -30,7 +30,7 @@ function geocodeAddress(geocoder, resultsMap) {
       console.log( loc ); // the place where loc contains geocoded coordinates
       $.get('/api/locations?longitude=' + loc[0] +'&latitude='+loc[1]).success(function (clinicsNearby) {
            console.log(clinicsNearby);
-           $.each(clinicsNearby, function(key, data) {
+           $.each(clinicsNearby, function(index, data) {
              var latLng = new google.maps.LatLng(data.loc[0], data.loc[1]);
              console.log(data.name);
              var marker = new google.maps.Marker({
@@ -39,15 +39,15 @@ function geocodeAddress(geocoder, resultsMap) {
                title: "test!",
              });
              marker.setMap(resultsMap);
+             google.maps.event.addDomListener(window, 'load', initMap);
+             google.maps.event.addListener(marker, 'click', function() {
+               console.log("boop" + index);
+             });
            });
        });
       var marker = new google.maps.Marker({
        map: resultsMap,
        position: results[0].geometry.location
-      });
-      google.maps.event.addDomListener(window, 'load', initMap);
-      google.maps.event.addListener(marker, 'click', function() {
-        console.log("boop");
       });
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
