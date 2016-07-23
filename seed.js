@@ -18,6 +18,7 @@ var clinics_list = [
     website: "https://www.plannedparenthood.org/health-center/california/oakland/94607/west-oakland-4090-90130?utm_campaign=west-oakland-health-center&utm_medium=organic&utm_source=local-listing",
     book_appointment: "https://docasap.com/center/209315/-1/0/0/0/PPFA/9390684/0/0",
     social_media: "",
+    location: [37.81391037, -122.290908,],
     // stories: {type: Schema.Types.ObjectId, ref: 'Story'},
     // location: {type: Schema.Types.ObjectId, ref: 'Location'},
     image: "",

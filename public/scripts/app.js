@@ -8,6 +8,9 @@ function initMap() {
     center: {lat: -34.397, lng: 150.644}
   });
   var geocoder = new google.maps.Geocoder();
+  document.getElementById('submit').addEventListener('click', function() {
+    geocodeAddress(geocoder, map);
+  });
 }
 
 function geocodeAddress(geocoder, resultsMap) {
@@ -18,6 +21,11 @@ function geocodeAddress(geocoder, resultsMap) {
     loc[0]=results[0].geometry.location.lat();
     loc[1]=results[0].geometry.location.lng();
     console.log( loc ); // the place where loc contains geocoded coordinates
+    var start_coord =  {
+      lng: loc[0],
+      lat: loc[1],
+    };
+    console.log(start_coord);
       resultsMap.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
         map: resultsMap,
@@ -30,9 +38,6 @@ function geocodeAddress(geocoder, resultsMap) {
 }
 
 $(document).ready(function(){
-  document.getElementById('submit').addEventListener('click', function() {
-    geocodeAddress(geocoder, map);
-  });
 $('.modal-trigger').leanModal();
   $('.modal-test').on('click', function(e) {
       console.log('add-clinic clicked!');
