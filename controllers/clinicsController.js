@@ -23,7 +23,7 @@ function findNearest(req, res, next) {
     db.Clinic.find({
       loc: {
         $near: coords,
-        $maxDistance: maxDistance
+        // $maxDistance: maxDistance
       }
     }).limit(limit).exec(function(err, locations) {
       if (err) {

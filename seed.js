@@ -33,8 +33,8 @@ var clinics_list = [
     book_appointment: "https://docasap.com/center/209315/-1/0/0/0/PPFA/9390684/0/0",
     social_media: "",
     loc: [
-      23.600800037384033,
-      46.76758746952729
+      37.813910,
+      -122.290908
     ],
     // stories: {type: Schema.Types.ObjectId, ref: 'Story'},
     // location: {type: Schema.Types.ObjectId, ref: 'Location'},
@@ -42,7 +42,7 @@ var clinics_list = [
     date_posted: currentTime,
   },
   {
-    name: "Family Planning Specialists",
+    name: "FPA Women’s Health - Oakland",
     address1: "400 29th St.",
     address2: "#301",
     address3: "",
@@ -52,12 +52,12 @@ var clinics_list = [
     phone_number: "510-899-7099",
     costs: "",
     email: "",
-    website: "https://www.plannedparenthood.org/health-center/california/oakland/94607/west-oakland-4090-90130?utm_campaign=west-oakland-health-center&utm_medium=organic&utm_source=local-listing",
-    book_appointment: "https://docasap.com/center/209315/-1/0/0/0/PPFA/9390684/0/0",
+    website: "http://www.fpawomenshealth.com/locations/oakland-ca/",
+    book_appointment: "https://docasap.com/center/206418/0/0/0/0/FPA/2430989/0",
     social_media: "",
     loc: [
-      23.600800037384033,
-      46.76758746952729
+      37.818030,
+      -122.265158
     ],
     // stories: {type: Schema.Types.ObjectId, ref: 'Story'},
     // location: {type: Schema.Types.ObjectId, ref: 'Location'},
