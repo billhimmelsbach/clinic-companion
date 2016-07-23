@@ -24,9 +24,17 @@ function geocodeAddress(geocoder, resultsMap) {
     $.get('/api/locations?longitude=' + loc[0] +'&latitude='+loc[1]).success(function (clinicsNearby) {
       console.log(clinicsNearby);
       resultsMap.setCenter(results[0].geometry.location);
+      $.each(clinicsNearby, function(key, data) {
+        var latLng = new google.maps.LatLng(data.loc[0], data.loc[1]);
+        var marker = new google.maps.Marker({
+          position: latLng,
+          title: data.name,
+        });
+        marker.setMap(resultsMap);
+      });
       var marker = new google.maps.Marker({
-        map: resultsMap,
-        position: results[0].geometry.location
+      map: resultsMap,
+      position: results[0].geometry.location
       });
     });
     } else {
