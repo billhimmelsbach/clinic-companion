@@ -12,31 +12,10 @@ function create(req, res) {
   });
 }
 
-// function create(req, res) {
-//   console.log('body', req.body);
-//
-// // TODO
-// // FIX THIS BIZ
-// // TODO
-//   // split at comma and remove and trailing space
-//   // genres = req.body.genres.split(',').map(function(item) { return item.trim(); } );
-//   // req.body.genres = genres;
-//   // console.log(genres);
-//
-// // var cleanGenres = req.body.genres.split(',');
-// // cleanGenres = cleanGenres.map(function (word) {
-// //   return word.trim();
-// // });
-// var newAlbum = req.body;
-// newAlbum.genres = cleanGenres;
-//   db.Album.create(newAlbum, function(err, album) {
-//     if (err) { console.log('error', err); }
-//     console.log(album);
-//     res.json(album);
-//   });
-// }
-
 function index(req, res) {
+  // if (req.user!=="admin") {
+  //  return res.sendStatus(401);
+  // }
   db.Clinic.find({})
     // .populate('location')
     .exec(function(err, clinics) {
@@ -67,8 +46,14 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
-  // FILL ME IN !
+  db.Clinic.findByIdAndUpdate(req.params.clinicId, req.body, {new: true}, function(err, clinic) {
+  if (err) {
+		res.sendStatus(404);
+		}
+		res.json(clinic);
+	});
 }
+
 
 
 // export public methods here
@@ -77,5 +62,5 @@ module.exports = {
   create: create,
   show: show,
   destroy: destroy,
-  // update: update
+  update: update
 };

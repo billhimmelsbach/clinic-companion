@@ -17,7 +17,7 @@ $(document).ready(function(){
   });
 });
 
-$('#clinic-form form').on('submit', function(event) {
+$('body').on('click', '#SubmitNewClinicBtn', function(event) {
   event.preventDefault();
   console.log("test");
   var formData = $(this).serialize();
