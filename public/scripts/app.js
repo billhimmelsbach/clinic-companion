@@ -45,6 +45,10 @@ function geocodeAddress(geocoder, resultsMap) {
        map: resultsMap,
        position: results[0].geometry.location
       });
+      google.maps.event.addDomListener(window, 'load', initMap);
+      google.maps.event.addListener(marker, 'click', function() {
+        console.log("boop");
+      });
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
