@@ -16,8 +16,8 @@ function findNearest(req, res, next) {
 
     // get coordinates [ <longitude> , <latitude> ]
     var coords = [];
-    coords[0] = req.query.long || 0;
-    coords[1] = req.query.lat || 0;
+    coords[0] = req.query.longitude || 0;
+    coords[1] = req.query.latitude || 0;
 
     // find a location
     db.Clinic.find({
