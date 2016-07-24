@@ -101,13 +101,13 @@ function geocodeAddress(geocoder, resultsMap) {
 $(document).ready(function(){
 $('body').on('click', '.learnMoreButton', function(e) {
   console.log("boopboop");
-  $('.bottomContent').fadeOut();
+  $('#bottomContent').fadeOut();
   $('.floatMap').fadeOut();
 });
 $('.modal-trigger').leanModal();
 
   $('.modal-test').on('click', function(e) {
-    $('.bottomContent').fadeIn();
+    $('#bottomContent').fadeIn();
     $('.floatMap').fadeIn();
     // $('.floatMap').css('position', 'fixed');
     // $('.floatMap').css('margin-left', '+100%');
