@@ -29,8 +29,8 @@ function renderSearchPage(result, index) {
   Materialize.showStaggeredList('#staggered-test');
 }
 
-function renderResultsPage(result, index) {
-  console.log(result, template);
+function renderResultsPage(result) {
+  console.log(result);
   // console.log('rendering album', album);
   //grabs all the HTML from the template
   var templateHtml = $('#results-template').html();
@@ -42,7 +42,6 @@ function renderResultsPage(result, index) {
   var partialAlbumHtml = resultsTemplate(result);
   console.log(partialAlbumHtml);
   //adds to the top of the section
-  console.log(index);
   $('#bottomContent').empty();
   $('#bottomContent').append(partialAlbumHtml);
   // Materialize.showStaggeredList('#staggered-results');
@@ -130,16 +129,18 @@ $('body').on('click', '.learnMoreButton', function(e) {
   $.get('/api/clinics/' + resultId).success(function (result) {
     var resultToBeShown = result;
     console.log(resultToBeShown);
-    $('#bottomContent').fadeOut();
-    $('.floatMap').fadeOut();
-    renderResultsPage(resultToBeShown);
+    $('.floatMap').fadeOut('slow');
+    $('#bottomContent').fadeOut('slow', function() {
+      renderResultsPage(resultToBeShown);
+      $('#bottomContent').fadeIn('slow');
+    });
   });
 });
 $('.modal-trigger').leanModal();
 
   $('.modal-test').on('click', function(e) {
-    $('#bottomContent').fadeIn();
-    $('.floatMap').fadeIn();
+    $('#bottomContent').fadeIn('slow');
+    $('.floatMap').fadeIn('slow');
     // $('.floatMap').css('position', 'fixed');
     // $('.floatMap').css('margin-left', '+100%');
       console.log('add-clinic clicked!');
