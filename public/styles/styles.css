@@ -107,8 +107,10 @@ li {
 .resultsRow {
   /*height:50%*/
   position:absolute;
-  bottom: 0;
-  left:50%;
+  bottom: -10%;
+  left:10%;
+  width:80%;
+  display:flex;
 }
 .floatMap {
   z-index: 1000000;
