@@ -22,7 +22,7 @@ function renderSearchResult(result) {
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 12,
-    center: {lat: -34.397, lng: 150.644}
+    center: {lat: 37.81803, lng: -122.265158}
    //  mapTypeId: google.maps.MapTypeId.ROADMAP,
    //  styles: styleArray
    // styles: [{stylers:[{hue:'#2c3e50'},{saturation:250}]},{featureType:'road',elementType:'geometry',stylers:[{lightness:50},{visibility:'simplified'}]},{featureType:'road',elementType:'labels',stylers:[{visibility:'off'}]}]
@@ -69,10 +69,14 @@ function geocodeAddress(geocoder, resultsMap) {
              });
            });
        });
-      var marker = new google.maps.Marker({
-       map: resultsMap,
-       position: results[0].geometry.location
-      });
+
+       
+      // var marker = new google.maps.Marker({
+      //  map: resultsMap,
+      //  position: results[0].geometry.location
+      // });
+
+
       // for (var i = 0; i < markersArray.length; i++) {
       //   bounds.extend(markersArray[i].getPosition());
       // }
