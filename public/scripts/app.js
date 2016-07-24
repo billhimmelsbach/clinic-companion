@@ -71,8 +71,8 @@ function geocodeAddress(geocoder, resultsMap) {
              google.maps.event.addDomListener(window, 'load', initMap);
              google.maps.event.addListener(marker, 'click', function() {
                console.log("boop" + index);
-               console.log(clinicsNearby[index]);
-             renderSearchResult(clinicsNearby[index], index);
+               console.log(clinicsNearby);
+             renderSearchResult(clinicsNearby, index);
 
              });
            });

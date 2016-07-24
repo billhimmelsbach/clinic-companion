@@ -73,10 +73,11 @@
     <!-- end modal -->
     <!-- <li class="" style="transform: translateX(0px); opacity: 1;"> -->
       <script id='search-template' type='text/x-handlebars-template'>
+        \{{#each this}}
         <div id="resultContainer" class="center-align flow-text">
         <div class="row resultsRow">
-          <div class="bigLetter col s2 flow-text">
-            <h1 class="bigLetterHeadline">\{{index}}<h1>
+          <div class="bigLetter col s2  flow-text">
+            <h1 class="bigLetterHeadline">\{{@index}}: \{{this}}<h1>
           </div>
           <div class="col s6">
       <ul id="staggered-test">
@@ -94,6 +95,7 @@
     </div>
 </ul>
   </div>
+  \{{/each}}
       </script>
       <div id="bottomContent">
       </div>
