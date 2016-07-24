@@ -22,12 +22,14 @@ function render(result, index) {
   // $('.bigLetterHeadline').append(index);
 }
 
-function renderSearchResult(result, index) {
+function renderSearchPage(result, index) {
   var partialAlbumHtml = render(result);
   $('#bottomContent').empty();
   $('#bottomContent').append(partialAlbumHtml);
   Materialize.showStaggeredList('#staggered-test');
 }
+
+// function render
 
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -78,7 +80,7 @@ function geocodeAddress(geocoder, resultsMap) {
              google.maps.event.addListener(marker, 'click', function() {
                console.log("boop" + index);
                console.log(clinicsNearby[index]);
-             renderSearchResult(clinicsNearby[index], index);
+             renderSearchPage(clinicsNearby[index], index);
 
              });
            });
@@ -125,6 +127,7 @@ $('.modal-trigger').leanModal();
       // $('#songModal').data('album-id', currentAlbumId);
       // $('.modal').modal();
   });
+
 
 
 
