@@ -16,7 +16,9 @@ function renderSearchResult(result) {
   var partialAlbumHtml = resultsTemplate(result);
   console.log(partialAlbumHtml);
   //adds to the top of the section
+  $('#staggered-test').remove();
   $('#resultContainer').append(partialAlbumHtml);
+  Materialize.showStaggeredList('#staggered-test');
 }
 
 function initMap() {
@@ -66,6 +68,7 @@ function geocodeAddress(geocoder, resultsMap) {
                console.log("boop" + index);
                console.log(clinicsNearby[index]);
              renderSearchResult(clinicsNearby[index]);
+
              });
            });
        });

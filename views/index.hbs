@@ -70,10 +70,21 @@
         </section>
     </div>
     <!-- end modal -->
-    <div id="resultContainer">
-      <h1>TEST</h1>
-    <script id='search-template' type='text/x-handlebars-template'>
-      <h1>Party \{{name}}<h1>
+    <div id="resultContainer" class="center-align">
+      <script id='search-template' type='text/x-handlebars-template'>
+      <ul id="staggered-test">
+      <li class="" style="transform: translateX(0px); opacity: 1;">
+        <div> <h2><a href="#"><h1 class="flow-text">\{{name}}<h1></a></h2>
+          <h4 class="flow-text"> \{{address1}}</h4>
+          <h4 class="flow-text"> \{{address2}}</h4>
+          <h4 class="flow-text"> #: \{{phone_number}}</h4>
+        </div>
+
+      </li>
+</ul>
+
+
+
     </script>
     </div>
 </body>

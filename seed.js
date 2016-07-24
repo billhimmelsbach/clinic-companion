@@ -20,7 +20,7 @@ var currentTime = new Date();
 var clinics_list = [
   {
     name: "Planned Parenthood - West Oakland",
-    address1: "1682 7th St",
+    address1: "1682 7th St.",
     address2: "",
     address3: "",
     city: "Oakland",
