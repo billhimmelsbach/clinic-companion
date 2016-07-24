@@ -3,7 +3,7 @@ var template;
 var $clinicsList;
 var allClinics = [];
 
-function renderSearchResult(result) {
+function renderSearchResult(result, index) {
   console.log(result);
   // console.log('rendering album', album);
   //grabs all the HTML from the template
@@ -16,6 +16,9 @@ function renderSearchResult(result) {
   var partialAlbumHtml = resultsTemplate(result);
   console.log(partialAlbumHtml);
   //adds to the top of the section
+  console.log(index);
+  // $('.bigLetterHeadline').empty();
+  // $('.bigLetterHeadline').append(index);
   $('#staggered-test').remove();
   $('#resultContainer').append(partialAlbumHtml);
   Materialize.showStaggeredList('#staggered-test');
@@ -69,7 +72,7 @@ function geocodeAddress(geocoder, resultsMap) {
              google.maps.event.addListener(marker, 'click', function() {
                console.log("boop" + index);
                console.log(clinicsNearby[index]);
-             renderSearchResult(clinicsNearby[index]);
+             renderSearchResult(clinicsNearby[index], index);
 
              });
            });
