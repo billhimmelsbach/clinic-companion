@@ -12,6 +12,13 @@ html, body {
   font-weight: 300!important;
 }
 
+.costs{
+    width: 400px;
+    height: 200px;
+    overflow: hidden;
+    background-size: cover;
+}
+
 img {
   height:auto;
   width:auto;
