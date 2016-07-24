@@ -103,43 +103,29 @@
 
       <script id='results-template' type='text/x-handlebars-template'>
         <div class="row">
-      <div class="col s12 m10">
-        <h1>Sign Up </h1>
-        <div class="card-panel ">
-          <h6>Sign up with your email address.</h6>
-          <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s8">
-              <i class="mdi-communication-email prefix"></i>
-              <input id="email" type="email" class="validate">
-              <label for="email">Your email</label>
-            </div>
+        <div class="col s10">
+      <h2 class="header">\{{name}}</h2>
+      <div class="card horizontal">
+        <div class="card-image">
+          <img class="responsive-img" src="http://lorempixel.com/100/190/nature/10">
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <h4 class="flow-text">\{{address1}}</h4>
+            <h4 class="flow-text">\{{address2}}</h4>
+            <h4 class="flow-text">\{{address3}}</h4>
+            <h4 class="flow-text">\{{city}}, \{{state}} \{{zipcode}}</h4>
+            <h4 class="flow-text">\{{email}}</h4>
+            <a href="\{{website}}">Check Their Website</a>
           </div>
-          <div class="row">
-            <div class="input-field col s8">
-              <i class="mdi-action-lock-outline prefix"></i>
-              <input id="password" type="password" class="validate">
-              <label for="password">Password</label>
-            </div>
+          <div class="card-action">
+            <a href="\{{book_appointment}}">Make An Appoinment</a>
           </div>
-          <div class="row">
-            <div class="input-field col s8">
-              <i class="mdi-action-lock-outline prefix"></i>
-              <input id="password" type="password" class="validate">
-              <label for="password">Confirm Password</label>
-            </div>
-          </div>
-          <div class="row">
-              <div class="input-field col s12">
-                <a href="index.html" class="btn waves-effect waves-light col "><h6>Create Account</h6></a>
-              </div>
-            </div>
-        </form>
-         </div>
         </div>
       </div>
     </div>
+  </div>
+
       </script>
 
       <div id="bottomContent">
