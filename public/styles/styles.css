@@ -43,6 +43,12 @@ li {
   font-size:3vh!important;
 }
 
+.learnMoreButtonContainer {
+    background-color: blue;
+    font-size:1vh;
+    font-size:1vw;
+}
+
 #resultContainer {
   height: 20%;
     font-size: 1vh;
@@ -51,6 +57,9 @@ li {
   /*background-color:red;*/
   /*position: relative;*/
     /*flex-shrink: 20;*/
+}
+.resultsRow {
+  height:100%
 }
 .floatMap {
   z-index: 1000000;
