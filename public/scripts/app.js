@@ -4,7 +4,7 @@ var $clinicsList;
 var allClinics = [];
 
 function render(result, index) {
-  console.log(result);
+  console.log(result, template);
   // console.log('rendering album', album);
   //grabs all the HTML from the template
   var templateHtml = $('#search-template').html();
@@ -29,7 +29,24 @@ function renderSearchPage(result, index) {
   Materialize.showStaggeredList('#staggered-test');
 }
 
-// function render
+function renderResultsPage(result, index) {
+  console.log(result, template);
+  // console.log('rendering album', album);
+  //grabs all the HTML from the template
+  var templateHtml = $('#results-template').html();
+  console.log(templateHtml);
+  //a function that takes that HTML and compiles it
+  var resultsTemplate = Handlebars.compile(templateHtml);
+  console.log(resultsTemplate);
+  //just the HTML of the {{}}s, takes the album and piles them into the appropriate {{}}s
+  var partialAlbumHtml = resultsTemplate(result);
+  console.log(partialAlbumHtml);
+  //adds to the top of the section
+  console.log(index);
+  $('#bottomContent').empty();
+  $('#bottomContent').append(partialAlbumHtml);
+  // Materialize.showStaggeredList('#staggered-results');
+}
 
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -108,8 +125,15 @@ function geocodeAddress(geocoder, resultsMap) {
 $(document).ready(function(){
 $('body').on('click', '.learnMoreButton', function(e) {
   console.log("boopboop");
-  $('#bottomContent').fadeOut();
-  $('.floatMap').fadeOut();
+  var resultId= $('#resultContainer').data('result-id');
+  console.log(resultId);
+  $.get('/api/clinics/' + resultId).success(function (result) {
+    var resultToBeShown = result;
+    console.log(resultToBeShown);
+    $('#bottomContent').fadeOut();
+    $('.floatMap').fadeOut();
+    renderResultsPage(resultToBeShown);
+  });
 });
 $('.modal-trigger').leanModal();
 
