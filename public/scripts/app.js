@@ -19,8 +19,8 @@ function renderSearchResult(result, index) {
   console.log(index);
   // $('.bigLetterHeadline').empty();
   // $('.bigLetterHeadline').append(index);
-  $('#staggered-test').remove();
-  $('#resultContainer').append(partialAlbumHtml);
+  $('#bottomContent').empty();
+  $('#bottomContent').append(partialAlbumHtml);
   Materialize.showStaggeredList('#staggered-test');
 }
 
@@ -100,13 +100,16 @@ function geocodeAddress(geocoder, resultsMap) {
 $(document).ready(function(){
 $('body').on('click', '.learnMoreButton', function(e) {
   console.log("boopboop");
+  $('.bottomContent').fadeOut();
+  $('.floatMap').fadeOut();
 });
 $('.modal-trigger').leanModal();
 
   $('.modal-test').on('click', function(e) {
-    $('.bottomContent').fadeOut();
-    $('.floatMap').css('position', 'fixed');
-    $('.floatMap').css('margin-left', '+100%');
+    $('.bottomContent').fadeIn();
+    $('.floatMap').fadeIn();
+    // $('.floatMap').css('position', 'fixed');
+    // $('.floatMap').css('margin-left', '+100%');
       console.log('add-clinic clicked!');
 
       // var id= $(this).closest('.album').data('album-id'); // "5665ff1678209c64e51b4e7b"

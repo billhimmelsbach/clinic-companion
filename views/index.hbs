@@ -72,15 +72,13 @@
     </div>
     <!-- end modal -->
     <!-- <li class="" style="transform: translateX(0px); opacity: 1;"> -->
-    <div class="bottomContent">
-    <div id="resultContainer" class="center-align flow-text">
       <script id='search-template' type='text/x-handlebars-template'>
+        <div id="resultContainer" class="center-align flow-text">
         <div class="row resultsRow">
-          <!-- <div class="bigLetter col s2 flow-text">
-            <h1 class="bigLetterHeadline">TEST<h1>
-          </div> -->
-          <div class="col s4 offset-s4">
-            <h1>{{index}}</h1>
+          <div class="bigLetter col s2 flow-text">
+            <h1 class="bigLetterHeadline">\{{index}}<h1>
+          </div>
+          <div class="col s6">
       <ul id="staggered-test">
       <li>
         <div> <h2><a href="#"><h1 class="flow-text">\{{name}}<h1></a></h2>
@@ -89,19 +87,20 @@
           <h4 class="flow-text"> #: \{{phone_number}}</h4>
         </div>
             </li>
-        </div>
+          </div>
         <div class="learnMoreButtonContainer col s2">
           <button class="learnMoreButton waves-effect waves-light btn valign left">Learn More</button>
-      </div>
+          </div>
     </div>
-      </div>
 </ul>
-
-
-
-    </script>
-    </div>
   </div>
+      </script>
+      <div id="bottomContent">
+      </div>
+
+
+
+
   </div>
 </body>
 
