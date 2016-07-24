@@ -15,6 +15,7 @@
 //{{#if admin}} show the buttons, else do note
 //{{if user}} then show normal page {{else}} show login
 //
+//ADJUST MAP FOR NEW MARKERS ZOOM
 
 
 /////////////////////////////
@@ -45,6 +46,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 moment().format();
 
 app.set('view engine', 'hbs');
+// app.set('view engine', 'html');
 
 var controllers = require('./controllers');
 

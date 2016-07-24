@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="styles/styles.css">
     <!-- VENDOR SCRIPTS -->
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 
     <!-- APPLICATION SCRIPTS -->
     <script src="scripts/app.js"></script>
@@ -25,15 +25,14 @@
      <input id="address" type="textbox" value="Sydney, NSW">
      <input id="submit" type="button" value="Geocode">
    </div>
+   <a class="waves-effect waves-light btn modal-trigger modal-test right top" href="#modalNewClinic">Admin</a>
+   <br>
    <div class="floatMap">
    <div id="map"></div>
   </div>
   <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkucwHjlesE88fzV0H4Dgn-S4JeIiS9XA&callback=initMap">
   </script>
-
-    <!-- Modal Trigger -->
-    <a class="waves-effect waves-light btn modal-trigger modal-test right" href="#modalNewClinic">Admin</a>
 
     <!-- Modal Structure -->
     <div id="modalNewClinic" class="modal">
@@ -72,8 +71,9 @@
     </div>
     <!-- end modal -->
     <div id="resultContainer">
+      <h1> TEST</h1>
     <script id='searchResultTemplate' type='text/x-handlebars-template'>
-      <h1>{{name}}<h1>
+      <h1>Party {{{name}}}<h1>
     </script>
     </div>
 </body>

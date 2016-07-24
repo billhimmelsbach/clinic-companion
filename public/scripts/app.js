@@ -8,10 +8,13 @@ function renderSearchResult(result) {
   // console.log('rendering album', album);
   //grabs all the HTML from the template
   var templateHtml = $('#searchResultTemplate').html();
+  console.log(templateHtml);
   //a function that takes that HTML and compiles it
   var resultsTemplate = Handlebars.compile(templateHtml);
+  console.log(resultsTemplate);
   //just the HTML of the {{}}s, takes the album and piles them into the appropriate {{}}s
   var partialAlbumHtml = resultsTemplate(result);
+  console.log(partialAlbumHtml);
   //adds to the top of the section
   $('#resultContainer').append(partialAlbumHtml);
 }
