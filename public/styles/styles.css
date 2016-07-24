@@ -12,6 +12,10 @@ html, body {
   font-weight: 300!important;
 }
 
+.subHeading {
+  font-size:-20%!important;
+}
+
 .costs{
     width: 400px;
     height: 200px;
