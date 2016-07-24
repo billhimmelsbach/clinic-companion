@@ -3,6 +3,10 @@ html, body {
   margin: 0;
   padding: 0;
 }
+.fullPageContainer {
+  height:100%;
+}
+
 #map {
   height: 100%;
 }
@@ -17,7 +21,7 @@ html, body {
   /*position: absolute;*/
   margin:auto;
   top: 1%;
-  width: auto;
+  /*width: auto;*/
   /*left: 25%;*/
   z-index: 5;
   background-color: #fff;
@@ -30,13 +34,23 @@ html, body {
 }
 li {
   opacity: 0;
-  color:red;
+      font-size: 1vh;
+  /*color:red;*/
+  /*flex-shrink: 20;*/
 }
+
+.flowText {
+  font-size:3vh!important;
+}
+
 #resultContainer {
-  /*max-height: 10px;*/
-  position:relative;
+  height: 20%;
+    font-size: 1vh;
+  /*font-size:15%*/
+  /*position:relative;*/
   /*background-color:red;*/
-  /*position: absolute;*/
+  /*position: relative;*/
+    /*flex-shrink: 20;*/
 }
 .floatMap {
   z-index: 1000000;
@@ -44,7 +58,7 @@ li {
   top: 15%;
   margin:auto;
   width: 80%;
-  height: 70%;
+  height: 60%;
   /*margin-left: +100%;*/
   /*border-style: solid;*/
   /*border-right: 0px;
