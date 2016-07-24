@@ -33,8 +33,8 @@ var clinics_list = [
     book_appointment: "https://docasap.com/center/209315/-1/0/0/0/PPFA/9390684/0/0",
     social_media: "",
     loc: [
-      37.813910,
-      -122.290908
+      37.805542,
+      -122.296026
     ],
     // stories: {type: Schema.Types.ObjectId, ref: 'Story'},
     // location: {type: Schema.Types.ObjectId, ref: 'Location'},

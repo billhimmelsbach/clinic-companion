@@ -75,8 +75,31 @@
 
     <!-- <li class="" style="transform: translateX(0px); opacity: 1;"> -->
       <script id='search-template' type='text/x-handlebars-template'>
-        \{{ResultArray.[0]}}
         <div id="resultContainer" class="center-align flow-text" data-result-id="\{{_id}}">
+        <div class="row">
+        <div class="col s7 offset 3">
+      <div class="card horizontal resultsCard">
+        <div class="card-image">
+          <div class="bigLetter col s1 offset-s4  flow-text">
+            <h1 class="bigLetterHeadline">\{{letter_designation}}<h1>
+          </div>
+        </div>
+        <div class="card-stacked">
+          <div class="card-content noMargin noPadding">
+            <h4 class="flow-text">\{{name}}<h4>
+            <h4 class="flow-text">\{{address1}}</h4>
+            <h4 class="flow-text">\{{address2}}</h4>
+            <h4 class="flow-text">\{{address3}}</h4>
+          </div>
+          <div class="card-action">
+            <a class="learnMoreButton">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+        <!-- <div id="resultContainer" class="center-align flow-text" data-result-id="\{{_id}}">
         <div class="row resultsRow">
           <div class="bigLetter col s1 offset-s2  flow-text">
             <h1 class="bigLetterHeadline">\{{letter_designation}}<h1>
@@ -96,7 +119,7 @@
           </div>
     </div>
 </ul>
-  </div>
+  </div> -->
       </script>
 
       <!-- ResultsPage Template -->

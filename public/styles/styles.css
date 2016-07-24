@@ -12,6 +12,14 @@ html, body {
   font-weight: 300!important;
 }
 
+.noMargin {
+  margin:0!important;
+}
+
+.noPadding {
+  padding:0!important;
+}
+
 .subHeader {
   font-size:275%;
 }
@@ -70,9 +78,13 @@ li {
     font-size:1vw;
 }
 
+.resultsCard {
+  /*height:20px;*/
+}
+
 #resultContainer {
-  height: 20%;
-    font-size: 1vh;
+  height: 5%!important;
+    font-size: .8vh!important;
   /*font-size:15%*/
   /*position:relative;*/
   /*background-color:red;*/
