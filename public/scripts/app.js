@@ -104,6 +104,9 @@ $('body').on('click', '.learnMoreButton', function(e) {
 $('.modal-trigger').leanModal();
 
   $('.modal-test').on('click', function(e) {
+    $('.bottomContent').fadeOut();
+    $('.floatMap').css('position', 'fixed');
+    $('.floatMap').css('margin-left', '+100%');
       console.log('add-clinic clicked!');
 
       // var id= $(this).closest('.album').data('album-id'); // "5665ff1678209c64e51b4e7b"
