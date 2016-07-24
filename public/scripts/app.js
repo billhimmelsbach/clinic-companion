@@ -3,7 +3,7 @@ var template;
 var $clinicsList;
 var allClinics = [];
 
-function renderSearchResult(result, index) {
+function render(result, index) {
   console.log(result);
   // console.log('rendering album', album);
   //grabs all the HTML from the template
@@ -17,8 +17,13 @@ function renderSearchResult(result, index) {
   console.log(partialAlbumHtml);
   //adds to the top of the section
   console.log(index);
+  return(partialAlbumHtml);
   // $('.bigLetterHeadline').empty();
   // $('.bigLetterHeadline').append(index);
+}
+
+function renderSearchResult(result, index) {
+  var partialAlbumHtml = render(result);
   $('#bottomContent').empty();
   $('#bottomContent').append(partialAlbumHtml);
   Materialize.showStaggeredList('#staggered-test');
