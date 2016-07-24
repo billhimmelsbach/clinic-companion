@@ -28,6 +28,7 @@ var ClinicSchema = new Schema({
     // location: {type: Schema.Types.ObjectId, ref: 'Location'},
     image: String,
     date_posted: String,
+		letter_designation: String
 });
 
 var Clinic = mongoose.model('Clinic', ClinicSchema);

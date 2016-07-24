@@ -57,6 +57,7 @@ function geocodeAddress(geocoder, resultsMap) {
              var latLng = new google.maps.LatLng(data.loc[0], data.loc[1]);
              console.log(data.name);
              var letter = String.fromCharCode("A".charCodeAt(0) + index);
+             clinicsNearby[index].letter_designation=letter;
              var marker = new google.maps.Marker({
                map: resultsMap,
                animation: google.maps.Animation.DROP,
@@ -71,8 +72,8 @@ function geocodeAddress(geocoder, resultsMap) {
              google.maps.event.addDomListener(window, 'load', initMap);
              google.maps.event.addListener(marker, 'click', function() {
                console.log("boop" + index);
-               console.log(clinicsNearby);
-             renderSearchResult(clinicsNearby, index);
+               console.log(clinicsNearby[index]);
+             renderSearchResult(clinicsNearby[index], index);
 
              });
            });

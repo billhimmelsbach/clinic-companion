@@ -40,6 +40,7 @@ var clinics_list = [
     // location: {type: Schema.Types.ObjectId, ref: 'Location'},
     image: "",
     date_posted: currentTime,
+    letter_designation:"",
   },
   {
     name: "FPA Women’s Health - Oakland",
@@ -63,6 +64,7 @@ var clinics_list = [
     // location: {type: Schema.Types.ObjectId, ref: 'Location'},
     image: "",
     date_posted: currentTime,
+    letter_designation:"",
   },
 ];
   // {
@@ -122,6 +124,7 @@ db.Clinic.remove({}, function(err, clinics){
       loc:clinicData.loc,
       stories: clinicData.stories,
       image: clinicData.image,
+      letter_designation: clinicData.letter_designation,
       date_posted: clinicData.date_posted
     });
     console.log("ooooh k");
