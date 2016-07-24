@@ -98,7 +98,9 @@ function geocodeAddress(geocoder, resultsMap) {
 }
 
 $(document).ready(function(){
-
+$('body').on('click', '.learnMoreButton', function(e) {
+  console.log("boopboop");
+});
 $('.modal-trigger').leanModal();
 
   $('.modal-test').on('click', function(e) {
