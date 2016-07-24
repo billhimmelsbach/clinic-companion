@@ -100,11 +100,15 @@ function geocodeAddress(geocoder, resultsMap) {
 $(document).ready(function(){
 $('body').on('click', '.learnMoreButton', function(e) {
   console.log("boopboop");
+  $('body').empty();
 });
 $('.modal-trigger').leanModal();
 
   $('.modal-test').on('click', function(e) {
       console.log('add-clinic clicked!');
+      $( ".bottomContent" ).fadeIn( "slow", function() {
+   // Animation complete
+ });
 
       // var id= $(this).closest('.album').data('album-id'); // "5665ff1678209c64e51b4e7b"
       // console.log('id',id);
