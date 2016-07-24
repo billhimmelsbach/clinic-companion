@@ -82,14 +82,15 @@ li {
   /*height:20px;*/
 }
 
+.cardContainer {
+  width:100%!important;
+  height:20%!important;
+  margin:50px!important;
+}
+
 #resultContainer {
-  height: 5%!important;
-    font-size: .8vh!important;
-  /*font-size:15%*/
-  /*position:relative;*/
-  /*background-color:red;*/
-  /*position: relative;*/
-    /*flex-shrink: 20;*/
+  position:absolute;
+  background-color:red;
 }
 .resultsRow {
   height:100%
