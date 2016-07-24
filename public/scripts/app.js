@@ -7,7 +7,7 @@ function renderSearchResult(result) {
   console.log(result);
   // console.log('rendering album', album);
   //grabs all the HTML from the template
-  var templateHtml = $('#searchResultTemplate').html();
+  var templateHtml = $('#search-template').html();
   console.log(templateHtml);
   //a function that takes that HTML and compiles it
   var resultsTemplate = Handlebars.compile(templateHtml);
@@ -70,7 +70,7 @@ function geocodeAddress(geocoder, resultsMap) {
            });
        });
 
-       
+
       // var marker = new google.maps.Marker({
       //  map: resultsMap,
       //  position: results[0].geometry.location
