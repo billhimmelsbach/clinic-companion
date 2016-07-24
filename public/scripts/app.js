@@ -5,7 +5,7 @@ var allClinics = [];
 
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
+    zoom: 12,
     center: {lat: -34.397, lng: 150.644}
    //  mapTypeId: google.maps.MapTypeId.ROADMAP,
    //  styles: styleArray
@@ -21,6 +21,8 @@ function initMap() {
 
 function geocodeAddress(geocoder, resultsMap) {
   var loc=[];
+  // var markersArray = [];
+  // var bounds = new google.maps.LatLngBounds();
   var address = document.getElementById('address').value;
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
@@ -34,11 +36,15 @@ function geocodeAddress(geocoder, resultsMap) {
              var latLng = new google.maps.LatLng(data.loc[0], data.loc[1]);
              console.log(data.name);
              var marker = new google.maps.Marker({
+               map: resultsMap,
                animation: google.maps.Animation.DROP,
                position: latLng,
                title: "test!",
              });
+             console.log(marker);
+            //  markersArray.push(marker);
              marker.setMap(resultsMap);
+            //  console.log(markersArray);
              google.maps.event.addDomListener(window, 'load', initMap);
              google.maps.event.addListener(marker, 'click', function() {
                console.log("boop" + index);
@@ -49,6 +55,12 @@ function geocodeAddress(geocoder, resultsMap) {
        map: resultsMap,
        position: results[0].geometry.location
       });
+      // for (var i = 0; i < markersArray.length; i++) {
+      //   bounds.extend(markersArray[i].getPosition());
+      // }
+      // console.log(bounds);
+      // results.fitBounds(bounds);
+      // console.log(markersArray);
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
