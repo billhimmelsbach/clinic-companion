@@ -82,14 +82,26 @@ li {
   /*height:20px;*/
 }
 
+/*.resultsContainer {
+  position:absolute !important;
+  bottom:0 !important;
+  left:50% !important;
+}*/
+/*
+.resultsRow{
+  height:20%!important;
+}*/
+
 .cardContainer {
   width:100%!important;
   height:20%!important;
   margin:50px!important;
+  /*bottom:0;
+  float: left!important;*/
 }
 
 #resultContainer {
-  position:absolute;
+  /*position:absolute;*/
   background-color:red;
 }
 .resultsRow {
