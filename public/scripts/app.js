@@ -53,9 +53,11 @@ function geocodeAddress(geocoder, resultsMap) {
            $.each(clinicsNearby, function(index, data) {
              var latLng = new google.maps.LatLng(data.loc[0], data.loc[1]);
              console.log(data.name);
+             var letter = String.fromCharCode("A".charCodeAt(0) + index);
              var marker = new google.maps.Marker({
                map: resultsMap,
                animation: google.maps.Animation.DROP,
+               icon: "http://maps.google.com/mapfiles/marker" + letter + ".png",
                position: latLng,
                title: "test!",
              });
