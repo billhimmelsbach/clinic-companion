@@ -83,7 +83,7 @@ function geocodeAddress(geocoder, resultsMap) {
 				console.log(clinicsNearby);
 				$.each(clinicsNearby, function(index, data) {
 					var latLng = new google.maps.LatLng(data.loc[0], data.loc[1]);
-          console.log(latLng);
+          console.log(latLng.lat(), latLng.lng());
           console.log(data.name);
 					var letter = String.fromCharCode("A".charCodeAt(0) + index);
 					clinicsNearby[index].letter_designation = letter;
@@ -94,11 +94,11 @@ function geocodeAddress(geocoder, resultsMap) {
 						position: latLng,
 						title: "test!",
 					});
-          console.log(latLng);
+              console.log(latLng.lat(), latLng.lng());
 					bounds.extend(latLng);
 					console.log(bounds.getNorthEast());
           console.log(bounds.getSouthWest());
-					// results.fitBounds(bounds);
+					resultsMap.fitBounds(bounds);
 					// console.log(markersArray);
 					console.log(marker);
 					// markersArray.push(marker);
