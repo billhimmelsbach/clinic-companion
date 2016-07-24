@@ -99,33 +99,16 @@ function geocodeAddress(geocoder, resultsMap) {
 					console.log(bounds.getNorthEast());
           console.log(bounds.getSouthWest());
 					resultsMap.fitBounds(bounds);
-					// console.log(markersArray);
 					console.log(marker);
-					// markersArray.push(marker);
 					marker.setMap(resultsMap);
-					// console.log(markersArray);
 					google.maps.event.addDomListener(window, 'load', initMap);
 					google.maps.event.addListener(marker, 'click', function() {
 						console.log("boop" + index);
 						console.log(clinicsNearby[index]);
 						renderSearchPage(clinicsNearby[index], index);
-
 					});
 				});
 			});
-
-			//  for (var i = 0; i < markersArray.length; i++) {
-			//    bounds.extend(markersArray[i].getPosition());
-			//  }
-			//  console.log(bounds);
-			//  results.fitBounds(bounds);
-			//  console.log(markersArray);
-			// var marker = new google.maps.Marker({
-			//  map: resultsMap,
-			//  position: results[0].geometry.location
-			// });
-
-
 		} else {
 			alert('Geocode was not successful for the following reason: ' + status);
 		}
