@@ -28,7 +28,16 @@ html, body {
   line-height: 30px;
   padding-left: 10px;
 }
-
+li {
+  opacity: 0;
+  color:red;
+}
+#resultContainer {
+  /*max-height: 10px;*/
+  position:relative;
+  /*background-color:red;*/
+  /*position: absolute;*/
+}
 .floatMap {
   z-index: 1000000;
   /*position: fixed;*/
