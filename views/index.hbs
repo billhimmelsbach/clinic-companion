@@ -34,7 +34,31 @@
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkucwHjlesE88fzV0H4Dgn-S4JeIiS9XA&callback=initMap">
         </script>
 
+        <!-- Modal Add Story -->
+        <div id="modalNewStory" class="modal modal-fixed-footer" >
+            <div class="modal-content">
+                <section id='newStoryForm' class="container">
+                    <form>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="address1">What is your story about this clinic?</label>
+                            <div class="col-md-4">
+                                <input id="textbox" name="address1" type="text" placeholder="20 Main St" class="form-control input-md">
+                            </div>
+                        </div>
 
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <button id="submitNewStoryBtn" name="singlebutton" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+            </fieldset>
+            </form>
+            </section>
+        </div>
+        <!-- end modal -->
         <!-- Modal Structure -->
         <div id="modalNewClinic" class="modal">
             <div class="modal-content">
@@ -146,6 +170,7 @@
         <!-- end modal -->
 
 
+
         <!-- ResultsPage Template -->
 
         <script id='results-template' type='text/x-handlebars-template'>
@@ -205,37 +230,11 @@
 
 <script id='storys-template' type='text/x-handlebars-template'>
           \{{#each this}}
-          <!-- Modal Add Story -->
-          <div id="modalNewStory" class="modal modal-fixed-footer" >
-              <div class="modal-content">
-                  <section id='newStoryForm' class="container">
-                      <form>
-                          <div class="form-group">
-                              <label class="col-md-4 control-label" for="address1">What is your story about this clinic?</label>
-                              <div class="col-md-4">
-                                  <input id="textbox" name="address1" type="text" placeholder="20 Main St" class="form-control input-md">
-                              </div>
-                          </div>
-
-              </div>
-              <div class="modal-footer">
-                  <div class="form-group">
-                      <div class="col-md-4">
-                          <button id="submitNewStoryBtn" name="singlebutton" class="btn btn-primary">Submit</button>
-                      </div>
-                  </div>
-              </div>
-              </fieldset>
-              </form>
-              </section>
-          </div>
-          <!-- end modal -->
-
             <div class="row">
                 <div class="col s10">
                     <div class="row valign-wrapper">
                         <h2 class="header subHeader storyHeadline">What is having an abortion here like?</h2>
-                        <a id="submitNewStoryButton" class="valign waves-effect btn-primary waves-light btn modal-trigger right top" href="#modalNewStory">Add Your Own Story</a>
+                        <a id="submitNewStoryButton" class="modal-trigger valign waves-effect btn-primary waves-light btn right top" href="#modalNewStory">Add Your Own Story</a>
                     </div>
                     <div class="row">
                         <div class="card horizontal">

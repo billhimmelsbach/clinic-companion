@@ -44,6 +44,7 @@ function renderStorys(storyResult) {
 	//adds to the top of the section
 	$('#storyContent').empty();
 	$('#storyContent').append(partialAlbumHtml);
+	$('.modal-trigger').leanModal();
 	// Materialize.showStaggeredList('#staggered-results');
 }
 
@@ -134,6 +135,7 @@ function geocodeAddress(geocoder, resultsMap) {
 }
 
 $(document).ready(function() {
+	$('.modal-trigger').leanModal();
 	Handlebars.registerHelper('breaklines', function(text) {
 		text = Handlebars.Utils.escapeExpression(text);
 		text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
@@ -161,7 +163,6 @@ $(document).ready(function() {
 			});
 		});
 	});
-	$('.modal-trigger').leanModal();
 
 	$('.modal-test').on('click', function(e) {
 		$('#bottomContent').fadeIn('slow');
@@ -204,6 +205,8 @@ $(document).ready(function() {
 		$('#modalNewClinic').closeModal();
 	});
 });
+
+
 //   $clinicsList = $('#clinicTarget');
 //
 //   // compile handlebars template
