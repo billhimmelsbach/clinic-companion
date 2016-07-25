@@ -67,29 +67,35 @@ var clinics_list = [
     letter_designation:"",
   },
 ];
-  // {
-  // title: "The Great Gatsby",
-  // location: "F Scott Fitzgerald",
-  // image: "https://s3-us-west-2.amazonaws.com/sandboxapi/great_gatsby.jpg",
-  // releaseDate: "April 10, 1925"
-  // },
 
-var locations_list = [];
+  var storys_list = [
+    {
+      story_content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      // user:"",
+      date_posted: currentTime,
+    },
+    {
+      story_content: "Test Test Test",
+      // user:"",
+      date_posted: currentTime,
+    },
+  ];
 
-// var locations_list = [
-//   {
-//     name: "Harper Lee",
-//     alive: false
-//   },
-//   {
-//     name: "F Scott Fitzgerald",
-//     alive: false
-//   },
-//   {
-//     name: "Victor Hugo",
-//     alive: false
-//   }
-// ];
+  // var users_list = [
+  //   {
+  //     username: "whimmels@gmail.com",
+  //     // user:"",
+  //     // password: "",
+  //     date_created: currentTime,
+  //   },
+  //   {
+  //     username: "cansofspams@gmai.com",
+  //     // user:"",
+  //     // password: "",
+  //     date_created: currentTime,
+  //   },
+  // ];
+
 //
 // db.Location.remove({}, function(err, locations) {
 //   console.log('removed all locations');
@@ -102,6 +108,37 @@ var locations_list = [];
 //     console.log("created", locations.length, "locations");
 //   });
 // });
+// db.User.remove({}, function(err, users){
+//   console.log('removed all users');
+//   users_list.forEach(function (userData) {
+//     var newUser = new db.User({
+//       name: clinicData.name,
+//       username: userData.username,
+//       password: password.username,
+//       date_created: currentTime,
+//     });
+//   });
+// });
+
+db.Story.remove({}, function(err, storyData, index){
+  console.log('removed all storys');
+  storys_list.forEach(function (storyData) {
+    var newStory = new db.Story({
+      story_content: storyData.story_content,
+      username: storyData.username,
+      clinic: storyData.clinic,
+      date_posted: currentTime,
+    });
+    newStory.save(function(err, savedStory){
+      if (err) {
+        return console.log(err);
+      }
+      console.log("ok!");
+      console.log('saved story ' + savedStory._id);
+    });
+  });
+});
+
 
 
 db.Clinic.remove({}, function(err, clinics){
