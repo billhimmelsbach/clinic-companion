@@ -206,7 +206,7 @@
 <script id='storys-template' type='text/x-handlebars-template'>
           \{{#each this}}
           <!-- Modal Add Story -->
-          <div id="modalNewStory" class="modal">
+          <div id="modalNewStory" class="modal modal-fixed-footer" >
               <div class="modal-content">
                   <section id='newStoryForm' class="container">
                       <form>
@@ -235,7 +235,7 @@
                 <div class="col s10">
                     <div class="row valign-wrapper">
                         <h2 class="header subHeader storyHeadline">What is having an abortion here like?</h2>
-                        <a class="waves-effect waves-light btn modal-trigger right top" href="#modalNewStory">Add Your Own Story</a>
+                        <a id="submitNewStoryButton" class="valign waves-effect btn-primary waves-light btn modal-trigger right top" href="#modalNewStory">Add Your Own Story</a>
                     </div>
                     <div class="row">
                         <div class="card horizontal">
