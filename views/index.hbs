@@ -139,8 +139,9 @@
                         <div class="card horizontal">
                             <div class="card-stacked">
                                 <div class="card-content">
-                                  
-                                    <p class="flow-text">\{{story_content}}</p>
+                                  \{{#each this}}
+                                    <p class="flow-text">"\{{story_content}}"</p>
+                                    \{{/each}}
                                 </div>
                             </div>
                         </div>

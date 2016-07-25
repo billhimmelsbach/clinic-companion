@@ -140,6 +140,8 @@ $(document).ready(function() {
 		console.log(resultId);
 		$.get('/api/clinics/' + resultId).success(function(result) {
       $.get('/api/clinics/' + resultId + '/storys').success(function(storyResult) {
+				console.log("!!!!!!!!888888888888" + storyResult);
+				console.log(storyResult);
 			var resultToBeShown = result;
 			console.log(resultToBeShown);
 			$('.floatMap').fadeOut('slow');
