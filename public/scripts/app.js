@@ -134,6 +134,12 @@ function geocodeAddress(geocoder, resultsMap) {
 }
 
 $(document).ready(function() {
+	Handlebars.registerHelper('breaklines', function(text) {
+		text = Handlebars.Utils.escapeExpression(text);
+		text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
+		console.log("FIREFIREFIREFIREFIREFIREFIREFIREFIREFIREFIREFIREFIREFIREFIRE!");
+		return new Handlebars.SafeString(text);
+	});
 	$('body').on('click', '.learnMoreButton', function(e) {
 		console.log("boopboop");
 		var resultId = $('#resultContainer').data('result-id');
