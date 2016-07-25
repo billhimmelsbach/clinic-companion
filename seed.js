@@ -97,7 +97,42 @@ var users_list = [{
 	hash: "ddf997ad91749ccd7b1321e8479e4f61ca474899d71bab9127c89a55d3ffe5a131dd033824118f325e23a81c843b475ce891e167596b450027d495026ba54740ef66e997c189cebb9322ab218e79240c10685af1ab0a3b38dee2603d48815d814cb7e16f474edbf690614b8a58d789b3ff32b381a36d7bf1de6c1c97b85fe090523260fb44c2669e1e72e1a90b15f0cc26202e9f5c69ee69907dc13adefb31eb2615ea9d533b359f40ee36570d40ae29a99ecf77646b846e4af5ed9c97321be80d6eda62fd5fba989b54e93b45cd8f015d4fcf13bc669de61add28b533ef92f3439a6c0351451fd49b52c9f43bd66f8abd3e24e9452ca0576659f1ffc028350425b3b3ac54397892351db1c8dee4f3af60a2301174462e4b24d309263bbd8c2a68ec051ab60030dea84ea36e36de8615328fd9331a522f6379e8cd7ce3a8a11dc4703472ef1a2efb8dcc70f9e53fce10596c4c6014f10c50ef65b66e8ff103414bfd3dbcd78db91ce531cb7c0a0189c96e48f97745054f4f7f014fbfcdc0536eba4702fee77cfbf7fab9feba598d5ee48ef844d8095f6327bbba1eb2bf4c26f2569290ff2bb5ade39032ccb449a6570d002692e923fa1574916034d03e0d0a5908668a92d83ffb8a022e7d2d8732113435a12bb334365d41c96a9c955c88bea1a27bb4d7c3a97bf2834a6cd65ff785e280721183c62d3d9c09637d3f1bfc5465",
 	date_created: currentTime,
 }, ];
+db.Clinic.remove({}, function(err, clinics) {
+	console.log('removed all clinics');
+	clinics_list.forEach(function(clinicData) {
+		var newClinic = new db.Clinic({
+			name: clinicData.name,
+			address1: clinicData.address1,
+			address2: clinicData.address2,
+			address3: clinicData.address3,
+			city: clinicData.city,
+			state: clinicData.state,
+			zipcode: clinicData.zipcode,
+			phone_number: clinicData.phone_number,
+			costs: clinicData.costs,
+			email: clinicData.email,
+			website: clinicData.website,
+			story_appointment: clinicData.story_appointment,
+			social_media: clinicData.social_media,
+			loc: clinicData.loc,
+			storys: clinicData.storys,
+			image: clinicData.image,
+			letter_designation: clinicData.letter_designation,
+			date_posted: clinicData.date_posted
+		});
+		console.log("ooooh k");
+		newClinic.save(function(err, savedClinic) {
+			if (err) {
+				return console.log(err);
+			}
+			console.log("ok!");
+			console.log('saved clinic ' + savedClinic.name);
+		});
+	});
+});
+console.log("!!!ALL CLINICS CREATED!!!");
 
+setTimeout(function(){
 db.User.remove({}, function(err, users) {
   console.log('removed all users');
   db.User.create(users_list, function(err, users){
@@ -107,6 +142,7 @@ db.User.remove({}, function(err, users) {
     }
     console.log('recreated all users');
     console.log("created", users.length, "users");
+
 
 
     db.Story.remove({}, function(err, storys){
@@ -137,6 +173,7 @@ db.User.remove({}, function(err, users) {
 
   });
 });
+}, 4000);
 
 //
 // db.Location.remove({}, function(err, locations) {
@@ -171,40 +208,7 @@ db.User.remove({}, function(err, users) {
 // console.log("!!!ALL USERS CREATED!!!");
 //
 //
-// db.Clinic.remove({}, function(err, clinics) {
-// 	console.log('removed all clinics');
-// 	clinics_list.forEach(function(clinicData) {
-// 		var newClinic = new db.Clinic({
-// 			name: clinicData.name,
-// 			address1: clinicData.address1,
-// 			address2: clinicData.address2,
-// 			address3: clinicData.address3,
-// 			city: clinicData.city,
-// 			state: clinicData.state,
-// 			zipcode: clinicData.zipcode,
-// 			phone_number: clinicData.phone_number,
-// 			costs: clinicData.costs,
-// 			email: clinicData.email,
-// 			website: clinicData.website,
-// 			story_appointment: clinicData.story_appointment,
-// 			social_media: clinicData.social_media,
-// 			loc: clinicData.loc,
-// 			storys: clinicData.storys,
-// 			image: clinicData.image,
-// 			letter_designation: clinicData.letter_designation,
-// 			date_posted: clinicData.date_posted
-// 		});
-// 		console.log("ooooh k");
-// 		newClinic.save(function(err, savedClinic) {
-// 			if (err) {
-// 				return console.log(err);
-// 			}
-// 			console.log("ok!");
-// 			console.log('saved clinic ' + savedClinic.name);
-// 		});
-// 	});
-// });
-// console.log("!!!ALL CLINICS CREATED!!!");
+
 //
 // setTimeout(function(){
 //   db.Story.remove({}, function(err, storyData, index) {
