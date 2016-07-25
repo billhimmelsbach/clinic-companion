@@ -28,6 +28,7 @@ function index(req, res) {
             storyList.push(storySearch);
           }
             res.json(storyList);
+            return;
             // res.json(foundStorys);
           });
       });

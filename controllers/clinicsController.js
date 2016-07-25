@@ -61,6 +61,7 @@ function show(req, res) {
     .exec(function(err, clinic) {
         if (err) { res.sendStatus(404); }
         res.json(clinic);
+        return;
     });
 }
 
