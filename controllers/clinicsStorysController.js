@@ -13,6 +13,7 @@ var db = require('../models');
 // }
 
 function index(req, res) {
+  var storyList=[];
   console.log(req.params.clinicId);
   db.Story.find({})
     .populate('username')
@@ -24,8 +25,10 @@ function index(req, res) {
           console.log(req.params.clinicId);
           if (test == req.params.clinicId) {
             console.log("found one!");
+            storyList.push(storySearch);
           }
             console.log("!!!" + test);
+            res.json(storyList);
             // res.json(foundStorys);
           });
       });
