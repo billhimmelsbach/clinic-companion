@@ -13,14 +13,32 @@ var db = require('../models');
 // }
 
 function index(req, res) {
+  console.log(req.params.clinicId);
   db.Story.find({})
     .populate('username')
     .populate('clinic')
     .exec(function(err, foundStorys) {
         if (err) { res.sendStatus(404); }
-              res.json(foundStorys);
+            console.log("!!!" + foundStorys[0]._id );
           });
       }
+
+      // function index(req, res) {
+      //   db.Story.clinic.findById(req.params.clinicId)
+      //     .populate('username')
+      //     .populate('clinic')
+      //     .exec(function(err, foundStorys) {
+      //         if (err) { res.sendStatus(404); }
+      //         foundStorys.clinic.find({_id: req.params.clinicId})
+      //           .populate('username')
+      //           .populate('clinic')
+      //           .exec(function(err, foundStorysClinic) {
+      //             if (err) { res.sendStatus(404); }
+      //             }
+      //             res.json(foundStorysClinic);
+      //
+      //           });
+      //       }
   // if (req.user!=="admin") {
   //  return res.sendStatus(401);
   // }
