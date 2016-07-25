@@ -19,9 +19,17 @@ function index(req, res) {
     .populate('clinic')
     .exec(function(err, foundStorys) {
         if (err) { res.sendStatus(404); }
-            console.log("!!!" + foundStorys[0]._id );
+        foundStorys.forEach(function(storySearch) {
+          var test = storySearch.clinic._id;
+          console.log(req.params.clinicId);
+          if (test == req.params.clinicId) {
+            console.log("found one!");
+          }
+            console.log("!!!" + test);
+            // res.json(foundStorys);
           });
-      }
+      });
+    }
 
       // function index(req, res) {
       //   db.Story.clinic.findById(req.params.clinicId)
