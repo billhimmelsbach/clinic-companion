@@ -18,6 +18,7 @@ function index(req, res) {
   // }
   db.Story.find({})
     .populate('username')
+    .populate('clinic')
     .exec(function(err, storys) {
         if (err) { res.sendStatus(404); }
         console.log(storys);
@@ -27,7 +28,8 @@ function index(req, res) {
 
 function show(req, res) {
   db.Story.findById(req.params.storyId)
-    // .populate('location')
+  .populate('username')
+  .populate('clinic')
     .exec(function(err, story) {
         if (err) { res.sendStatus(404); }
         res.json(story);
@@ -37,7 +39,8 @@ function show(req, res) {
 
 function destroy(req, res) {
   db.Story.findOneAndRemove({_id: req.params.storyId})
-    // .populate('location')
+  .populate('username')
+  .populate('clinic')
     .exec(function(err, story){
 		if (err) {
 			res.sendStatus(404);
@@ -47,7 +50,10 @@ function destroy(req, res) {
 }
 
 function update(req, res) {
-  db.Story.findByIdAndUpdate(req.params.storyId, req.body, {new: true}, function(err, story) {
+  db.Story.findByIdAndUpdate(req.params.storyId, req.body, {new: true})
+  .populate('username')
+  .populate('clinic')
+  .exec(function(err, story) {
   if (err) {
 		res.sendStatus(404);
 		}

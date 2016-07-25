@@ -137,6 +137,7 @@ app.put('/api/storys/:storyId', controllers.storys.update);
 app.post('/api/storys', controllers.storys.create);
 // app.post('/api/albums/:albumId/songs', controllers.songs.create);
 app.delete('/api/storys/:storyId', controllers.storys.destroy);
+app.get('/api/clinics/:clinicId/stories', controllers.storys.show);
 app.get('/api/locations/', controllers.clinics.findNearest);
 
 
