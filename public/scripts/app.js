@@ -2,6 +2,7 @@ console.log("Sanity Check: JS is working!");
 var template;
 var $clinicsList;
 var allClinics = [];
+var storyId;
 
 function render(result, index) {
 	console.log(result, template);
@@ -156,9 +157,21 @@ function getStories() {
 }
 
 $(document).ready(function() {
+  $('body').on('click', '#getStorysBtn', function(e) {
+    // var resultId = $('#resultContainer').data('result-id');
+		console.log("boopboop");
+    console.log(storyId);
+    $.get('/api/clinics/' + storyId + '/storys').success(function(result) {
+      console.log("weee!");
+      console.log(result);
+      var storyToBeShown = result;
+      console.log(storyToBeShown);
+  });
+});
 	$('body').on('click', '.learnMoreButton', function(e) {
 		console.log("boopboop");
 		var resultId = $('#resultContainer').data('result-id');
+    storyId=$('#resultContainer').data('result-id');
 		console.log(resultId);
 		$.get('/api/clinics/' + resultId).success(function(result) {
       // getStories();
@@ -169,6 +182,7 @@ $(document).ready(function() {
 			$('#bottomContent').fadeOut('slow', function() {
 				renderResultsPage(resultToBeShown);
 				$('#bottomContent').fadeIn('slow');
+        return;
       // });
 			});
 		});

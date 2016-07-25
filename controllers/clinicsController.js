@@ -30,7 +30,8 @@ function findNearest(req, res, next) {
         return res.sendStatus(500);
       }
 
-      res.json(locations);
+       res.json(locations);
+       return;
     });
   }
 
@@ -40,6 +41,7 @@ function create(req, res) {
   db.Clinic.create(newClinic, function (err, newClinic) {
     if (err) {res.sendStatus(404);}
     res.json(newClinic);
+    return;
   });
 }
 
@@ -52,6 +54,7 @@ function index(req, res) {
     .exec(function(err, clinics) {
         if (err) { res.sendStatus(404); }
         res.json(clinics);
+        return;
     });
 }
 
@@ -74,6 +77,7 @@ function destroy(req, res) {
 			res.sendStatus(404);
 		}
 		res.json(clinic);
+    return;
 	});
 }
 
@@ -83,6 +87,7 @@ function update(req, res) {
 		res.sendStatus(404);
 		}
 		res.json(clinic);
+    return;
 	});
 }
 

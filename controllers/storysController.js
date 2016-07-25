@@ -9,6 +9,7 @@ function create(req, res) {
   db.Story.create(newStory, function (err, newStory) {
     if (err) {res.sendStatus(404);}
     res.json(newStory);
+    return;
   });
 }
 
@@ -23,6 +24,7 @@ function index(req, res) {
         if (err) { res.sendStatus(404); }
         console.log(storys);
         res.json(storys);
+        return;
     });
 }
 
@@ -33,6 +35,7 @@ function show(req, res) {
     .exec(function(err, story) {
         if (err) { res.sendStatus(404); }
         res.json(story);
+        return;
     });
 }
 
@@ -46,6 +49,7 @@ function destroy(req, res) {
 			res.sendStatus(404);
 		}
 		res.json(story);
+    return;
 	});
 }
 
@@ -58,6 +62,7 @@ function update(req, res) {
 		res.sendStatus(404);
 		}
 		res.json(story);
+    return;
 	});
 }
 

@@ -19,7 +19,7 @@ function index(req, res) {
     .populate('username')
     .populate('clinic')
     .exec(function(err, foundStorys) {
-        if (err) { res.sendStatus(404); }
+        // if (err) { res.sendStatus(404); }
         foundStorys.forEach(function(storySearch) {
           var test = storySearch.clinic._id;
           console.log(req.params.clinicId);
