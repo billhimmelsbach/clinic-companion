@@ -47,6 +47,24 @@ function renderResultsPage(result) {
 	// Materialize.showStaggeredList('#staggered-results');
 }
 
+function renderStorysResult() {
+	console.log(result);
+	// console.log('rendering album', album);
+	//grabs all the HTML from the template
+	var templateHtml = $('#stories-template').html();
+	console.log(templateHtml);
+	//a function that takes that HTML and compiles it
+	var resultsTemplate = Handlebars.compile(templateHtml);
+	console.log(resultsTemplate);
+	//just the HTML of the {{}}s, takes the album and piles them into the appropriate {{}}s
+	var partialAlbumHtml = resultsTemplate(result);
+	console.log(partialAlbumHtml);
+	//adds to the top of the section
+	$('#storyContent').empty();
+	$('#storyContent').append(partialAlbumHtml);
+	// Materialize.showStaggeredList('#staggered-results');
+}
+
 function renderStoryPage(result) {
 	console.log(result);
 	// console.log('rendering album', album);
