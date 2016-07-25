@@ -27,10 +27,10 @@ function findNearest(req, res, next) {
       }
     }).limit(limit).exec(function(err, locations) {
       if (err) {
-        return res.json(500, err);
+        return res.sendStatus(500);
       }
 
-      res.json(200, locations);
+      res.json(locations);
     });
   }
 

@@ -27,7 +27,6 @@ function index(req, res) {
             console.log("found one!");
             storyList.push(storySearch);
           }
-            console.log("!!!" + test);
             res.json(storyList);
             // res.json(foundStorys);
           });
