@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/clinic-companion");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/personal-api");
 
 module.exports.Clinic = require("./clinic.js");
 module.exports.Location = require("./location.js");
