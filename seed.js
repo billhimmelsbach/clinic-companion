@@ -169,20 +169,20 @@ db.User.remove({}, function(err, users) {
             console.log('saved ' + savedStory.username + ' by ' + foundUser.username);
           });
         });
-        // db.Clinic.findOne({username: storyData.username}, function (err, foundUser) {
-        //   console.log('found user ' + foundUser.username + ' for story ' + storyData.username);
-        //   if (err) {
-        //     console.log(err);
-        //     return;
-        //   }
-        //   story.username = foundUser;
-        //   story.save(function(err, savedStory){
-        //     if (err) {
-        //       return console.log(err);
-        //     }
-        //     console.log('saved ' + savedStory.username + ' by ' + foundUser.username);
-        //   });
-        // });
+        db.Clinic.findOne({name: storyData.clinicName}, function (err, foundClinic) {
+          console.log('found user ' + foundClinic.name + ' for story ' + storyData.clinicName);
+          if (err) {
+            console.log(err);
+            return;
+          }
+          story.clinic = foundClinic;
+          story.save(function(err, savedStory){
+            if (err) {
+              return console.log(err);
+            }
+            console.log('saved ' + savedStory.clinic + ' by ' + foundClinic.name);
+          });
+        });
       });
     });
 
