@@ -3,7 +3,7 @@ Schema = mongoose.Schema;
 
 var StorySchema = new Schema({
 	  story_content: String,
-    user: {
+    username: {
       type: Schema.Types.ObjectId,
       ref: 'User'
     },

@@ -35,7 +35,7 @@ var clinics_list = [{
 	costs: "",
 	email: "",
 	website: "https://www.plannedparenthood.org/health-center/california/oakland/94607/west-oakland-4090-90130?utm_campaign=west-oakland-health-center&utm_medium=organic&utm_source=local-listing",
-	book_appointment: "https://docasap.com/center/209315/-1/0/0/0/PPFA/9390684/0/0",
+	story_appointment: "https://docasap.com/center/209315/-1/0/0/0/PPFA/9390684/0/0",
 	social_media: "",
 	loc: [
 		37.805542, -122.296026
@@ -57,7 +57,7 @@ var clinics_list = [{
 	costs: "",
 	email: "",
 	website: "http://www.fpawomenshealth.com/locations/oakland-ca/",
-	book_appointment: "https://docasap.com/center/206418/0/0/0/0/FPA/2430989/0",
+	story_appointment: "https://docasap.com/center/206418/0/0/0/0/FPA/2430989/0",
 	social_media: "",
 	loc: [
 		37.818030, -122.265158
@@ -71,7 +71,7 @@ var clinics_list = [{
 
 var storys_list = [{
 	story_content: "I had my abortion a week and a half ago. And it wasn't the terrible horror story people tell you. I'm only 21. I just got promoted to assistant manager at my work. I just now am able to pay for myself. Not anything else. The father was an ex of mine but we're still really good friends and do it from time to time. And I got pregnant.\b\bI've always been pro choice. But I never knew how to go about it. I went to a clinic that was a crisis pregnancy center and I didn't even know it. I told them I was thinking about getting an abortion. They didn't like judge me harshly but they did give me really bad information such as: pieces of the fetus will be left behind and they'll scrap out your uterus. Which kind of scared me. But I figured I should go to the actual clinic to hear from people who actually do it. And they were really nice and compassionate. In fact many of them were patients there. The pre-counsel session was really nice. And they asked me about the clinic-that I didn't know was cpc - and the woman told me it was false. That there's no metal that goes past the cervix.\b\bAfter a week (because of Memorial Day) I had it done. It wasn't painful. It wasn't terrible. Then again I was on painkillers. But it wasn't a horror story at all. I was crampy real bad the rest of the day. And I still was crampy for about a week but not bad at all. I was able to resume my life the next day. And honestly I have no regrets. And I just want women to know that it isn't a terrifying thing that happens to your body. And to get the facts straight from the source.",
-	username: "ashley@exampleemail.com",
+  username: "ashley@exampleemail.com",
 	date_posted: currentTime,
 },
 // {
@@ -98,6 +98,45 @@ var users_list = [{
 	date_created: currentTime,
 }, ];
 
+db.User.remove({}, function(err, users) {
+  console.log('removed all users');
+  db.User.create(users_list, function(err, users){
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log('recreated all users');
+    console.log("created", users.length, "users");
+
+
+    db.Story.remove({}, function(err, storys){
+      console.log('removed all storys');
+      storys_list.forEach(function (storyData) {
+        var story = new db.Story({
+          title: storyData.title,
+          image: storyData.image,
+          releaseDate: storyData.releaseDate
+        });
+        db.User.findOne({username: storyData.username}, function (err, foundUser) {
+          console.log('found user ' + foundUser.username + ' for story ' + storyData.username);
+          if (err) {
+            console.log(err);
+            return;
+          }
+          story.username = foundUser;
+          story.save(function(err, savedStory){
+            if (err) {
+              return console.log(err);
+            }
+            console.log('saved ' + savedStory.username + ' by ' + foundUser.username);
+          });
+        });
+      });
+    });
+
+  });
+});
+
 //
 // db.Location.remove({}, function(err, locations) {
 //   console.log('removed all locations');
@@ -110,96 +149,99 @@ var users_list = [{
 //     console.log("created", locations.length, "locations");
 //   });
 // });
-db.User.remove({}, function(err, users) {
-	console.log('removed all users');
-	users_list.forEach(function(userData) {
-		var newUser = new db.User({
-			username: userData.username,
-			salt: userData.salt,
-			hash: userData.hash,
-			date_created: userData.date_created,
-		});
-		newUser.save(function(err, savedUser) {
-			if (err) {
-				return console.log(err);
-			}
-			console.log("ok!");
-			console.log('saved user ' + savedUser.username);
-		});
-	});
-});
-console.log("!!!ALL USERS CREATED!!!");
-
-
-db.Clinic.remove({}, function(err, clinics) {
-	console.log('removed all clinics');
-	clinics_list.forEach(function(clinicData) {
-		var newClinic = new db.Clinic({
-			name: clinicData.name,
-			address1: clinicData.address1,
-			address2: clinicData.address2,
-			address3: clinicData.address3,
-			city: clinicData.city,
-			state: clinicData.state,
-			zipcode: clinicData.zipcode,
-			phone_number: clinicData.phone_number,
-			costs: clinicData.costs,
-			email: clinicData.email,
-			website: clinicData.website,
-			book_appointment: clinicData.book_appointment,
-			social_media: clinicData.social_media,
-			loc: clinicData.loc,
-			storys: clinicData.storys,
-			image: clinicData.image,
-			letter_designation: clinicData.letter_designation,
-			date_posted: clinicData.date_posted
-		});
-		console.log("ooooh k");
-		newClinic.save(function(err, savedClinic) {
-			if (err) {
-				return console.log(err);
-			}
-			console.log("ok!");
-			console.log('saved clinic ' + savedClinic.name);
-		});
-	});
-});
-console.log("!!!ALL CLINICS CREATED!!!");
+// db.User.remove({}, function(err, users) {
+// 	console.log('removed all users');
+// 	users_list.forEach(function(userData) {
+// 		var newUser = new db.User({
+// 			username: userData.username,
+// 			salt: userData.salt,
+// 			hash: userData.hash,
+// 			date_created: userData.date_created,
+// 		});
+// 		newUser.save(function(err, savedUser) {
+// 			if (err) {
+// 				return console.log(err);
+// 			}
+// 			console.log("ok!");
+// 			console.log('saved user ' + savedUser.username);
+// 		});
+// 	});
+// });
+// console.log("!!!ALL USERS CREATED!!!");
 //
-db.Story.remove({}, function(err, storyData, index) {
-  console.log('removed all storys');
-  storys_list.forEach(function(storyData) {
-  var newStory = new db.Story({
-  	story_content: storyData.story_content,
-  	username: storyData.username,
-  	clinic: storyData.clinic,
-  	date_posted: currentTime,
-  });
-  console.log(storyData.username);
-  console.log(storyData);
-  console.log(newStory);
-  db.User.findOne({username: storyData.username}, function(err, foundUser) {
-  	console.log('found user ' + foundUser.username + ' for story ' + storyData.username);
-  	if (err) {
-  		console.log(err);
-  		return;
-  	}
-  	console.log("WUUUT");
-  	newStory.username = foundUser;
-    console.log(newStory);
-
-  	newStory.save(function(err, savedStory) {
-  		if (err) {
-  			return console.log(err);
-  		}
-  		console.log("ok!");
-  		console.log('saved ' + savedStory.username);
-  	});
-  });
-
-  });
-});
-console.log("!!!ALL STORYS CREATED!!!");
+//
+// db.Clinic.remove({}, function(err, clinics) {
+// 	console.log('removed all clinics');
+// 	clinics_list.forEach(function(clinicData) {
+// 		var newClinic = new db.Clinic({
+// 			name: clinicData.name,
+// 			address1: clinicData.address1,
+// 			address2: clinicData.address2,
+// 			address3: clinicData.address3,
+// 			city: clinicData.city,
+// 			state: clinicData.state,
+// 			zipcode: clinicData.zipcode,
+// 			phone_number: clinicData.phone_number,
+// 			costs: clinicData.costs,
+// 			email: clinicData.email,
+// 			website: clinicData.website,
+// 			story_appointment: clinicData.story_appointment,
+// 			social_media: clinicData.social_media,
+// 			loc: clinicData.loc,
+// 			storys: clinicData.storys,
+// 			image: clinicData.image,
+// 			letter_designation: clinicData.letter_designation,
+// 			date_posted: clinicData.date_posted
+// 		});
+// 		console.log("ooooh k");
+// 		newClinic.save(function(err, savedClinic) {
+// 			if (err) {
+// 				return console.log(err);
+// 			}
+// 			console.log("ok!");
+// 			console.log('saved clinic ' + savedClinic.name);
+// 		});
+// 	});
+// });
+// console.log("!!!ALL CLINICS CREATED!!!");
+//
+// setTimeout(function(){
+//   db.Story.remove({}, function(err, storyData, index) {
+//     console.log('removed all storys');
+//     storys_list.forEach(function(storyData) {
+//       var newStory = new db.Story({
+//       	story_content: storyData.story_content,
+//       	username: storyData.username,
+//       	clinic: storyData.clinic,
+//       	date_posted: currentTime,
+//       });
+//       console.log(storyData.username);
+//       console.log(storyData);
+//       console.log(newStory);
+//       db.User.findOne({username: storyData.username}, function(err, foundUser) {
+//       	console.log('found user ' + foundUser.username + ' for story ' + storyData.username);
+//       	if (err) {
+//       		console.log(err);
+//       		return;
+//       	}
+//       	console.log("WUUUT");
+//       	newStory.username = foundUser;
+//         console.log("!!190!!"+newStory+"!!190!!");
+//
+//       	newStory.save(function(err, savedStory) {
+//       		if (err) {
+//       			return console.log(err);
+//       		}
+//       		console.log("ok!");
+//       		console.log('saved ' + savedStory.username);
+//           console.log('saved ' + savedStory);
+//       	});
+//       });
+//
+//     });
+//   });
+//   console.log("!!!ALL STORYS CREATED!!!");
+// }, 4000);
 
   // newStory.save(function(err, savedStory) {
   //   if (err) {

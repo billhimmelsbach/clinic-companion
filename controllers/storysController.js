@@ -17,9 +17,10 @@ function index(req, res) {
   //  return res.sendStatus(401);
   // }
   db.Story.find({})
-    // .populate('location')
+    .populate('username')
     .exec(function(err, storys) {
         if (err) { res.sendStatus(404); }
+        console.log(storys);
         res.json(storys);
     });
 }
