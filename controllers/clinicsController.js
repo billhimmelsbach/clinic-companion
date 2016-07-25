@@ -40,8 +40,11 @@ function create(req, res) {
   console.log(newClinic);
   console.log("FIRE!");
   console.log(req.body);
+  var loc = [req.body.latitude, req.body.longitude];
+  newClinic.loc = loc;
   db.Clinic.create(newClinic, function (err, clinicThing) {
     if (err) {res.sendStatus(404);}
+
     res.json(clinicThing);
   });
 }

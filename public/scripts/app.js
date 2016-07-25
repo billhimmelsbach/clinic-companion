@@ -187,13 +187,13 @@ $(document).ready(function() {
 		console.log("test");
 		var formData = $(this).serialize();
 		console.log(formData);
-		// var longitude= $('#longitudeInput').val();
-		// var latitude= $('#latitudeInput').val();
-		// var latLng=[latitude, longitude];
-		// var loc = "loc=" + latLng + "&";
-		// console.log(latLng);
-		// console.log(longitude);
-		// console.log(latitude);
+		var longitude= $('#longitudeInput').val();
+		var latitude= $('#latitudeInput').val();
+		var latLng=[latitude, longitude];
+		var loc = "loc=" + latLng + "&";
+		console.log(latLng);
+		console.log(longitude);
+		console.log(latitude);
 		$.post('/api/clinics', formData, function(clinic) {
 			// console.log(latLng);
 			// // clinic.loc=latLng;
