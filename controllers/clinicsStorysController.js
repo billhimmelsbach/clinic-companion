@@ -27,9 +27,9 @@ function index(req, res) {
             console.log("found one!");
             storyList.push(storySearch);
           }
-            res.json(storyList);
             // res.json(foundStorys);
           });
+          res.json(storyList);
       });
     }
 

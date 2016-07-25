@@ -121,14 +121,14 @@ $(document).ready(function() {
 		var resultId = $('#resultContainer').data('result-id');
 		console.log(resultId);
 		$.get('/api/clinics/' + resultId).success(function(result) {
-      // $.get('/api/clinics/' + resultId + '/stories').success(function(result) {
+      $.get('/api/clinics/' + resultId + '/storys').success(function(storyResult) {
 			var resultToBeShown = result;
 			console.log(resultToBeShown);
 			$('.floatMap').fadeOut('slow');
 			$('#bottomContent').fadeOut('slow', function() {
 				renderResultsPage(resultToBeShown);
 				$('#bottomContent').fadeIn('slow');
-      // });
+      });
 			});
 		});
 	});
