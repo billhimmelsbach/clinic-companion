@@ -63,6 +63,4 @@ module.exports = {
   show: show,
   destroy: destroy,
   update: update,
-  findNearest: findNearest
-
 };

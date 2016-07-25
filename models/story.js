@@ -7,6 +7,10 @@ var StorySchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
+    clinic: {
+      type: Schema.Types.ObjectId,
+      ref: 'Clinic'
+    },
     date_posted: String,
 });
 
