@@ -29,6 +29,8 @@ function renderSearchPage(result, index) {
 	Materialize.showStaggeredList('#staggered-test');
 }
 
+// renderStorys(storyResult);
+
 function renderResultsPage(result) {
 	console.log(result);
 	// console.log('rendering album', album);
@@ -127,6 +129,7 @@ $(document).ready(function() {
 			$('.floatMap').fadeOut('slow');
 			$('#bottomContent').fadeOut('slow', function() {
 				renderResultsPage(resultToBeShown);
+				// renderStorys(storyResult);
 				$('#bottomContent').fadeIn('slow');
       });
 			});
