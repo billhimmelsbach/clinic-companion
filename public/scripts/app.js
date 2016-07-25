@@ -115,13 +115,18 @@ function geocodeAddress(geocoder, resultsMap) {
 	});
 }
 
+function getStories() {
+  $.get('/api/clinics/' + resultId + '/stories').success(function(result) {console.log("WOW"+result);});
+}
+
 $(document).ready(function() {
 	$('body').on('click', '.learnMoreButton', function(e) {
 		console.log("boopboop");
 		var resultId = $('#resultContainer').data('result-id');
 		console.log(resultId);
 		$.get('/api/clinics/' + resultId).success(function(result) {
-      // $.get('/api/clinics/' + resultId + '/stories').success(function(result) {
+      // getStories();
+
 			var resultToBeShown = result;
 			console.log(resultToBeShown);
 			$('.floatMap').fadeOut('slow');
