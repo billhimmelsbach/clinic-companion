@@ -26,7 +26,9 @@
             <input id="address" type="textbox" value="" placeholder="Oakland, CA" required>
             <input id="submit" type="button" value="Search">
         </div>
+        <script id='admin-template' type='text/x-handlebars-template'>
         <a class="waves-effect waves-light btn modal-trigger modal-test right top" href="#modalNewClinic">Admin</a>
+        </script>
         <br>
         <div class="floatMap">
             <div id="map"></div>
@@ -248,8 +250,7 @@
         </script>
 
         <script id='storys-template' type='text/x-handlebars-template'>
-            \
-            {{#each this}}
+            \{{#each this}}
                 <div class="row">
                     <div class="col s10">
                         <div class="row valign-wrapper">
