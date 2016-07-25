@@ -34,10 +34,23 @@
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkucwHjlesE88fzV0H4Dgn-S4JeIiS9XA&callback=initMap">
         </script>
 
+
         <!-- Modal Structure -->
         <div id="modalNewClinic" class="modal">
             <div class="modal-content">
                 <section id='newClinicForm' class="container">
+                  <!-- <div class="form-group">
+                      <label class="col-md-4 control-label" for="loc">Longitude</label>
+                      <div class="col-md-4">
+                          <input id="longitudeInput" name="loc" type="number" placeholder="20.111" class="form-control input-md">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                        <label class="col-md-4 control-label" for="loc">Latitude</label>
+                        <div class="col-md-4">
+                            <input id="latitudeInput" name="loc" type="number" placeholder="30.111" class="form-control input-md">
+                        </div>
+                    </div> -->
                     <form>
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="address1">Address 1</label>
@@ -112,12 +125,6 @@
                           </div>
                       </div>
                       <div class="form-group">
-                          <label class="col-md-4 control-label" for="loc">[longitude, latitude]</label>
-                          <div class="col-md-4">
-                              <input id="textinput" name="loc" type="text" placeholder="[20.111, 30.111]" class="form-control input-md" required>
-                          </div>
-                      </div>
-                      <div class="form-group">
                           <label class="col-md-4 control-label" for="image">Image URL</label>
                           <div class="col-md-4">
                               <input id="textinput" name="image" type="text" placeholder="http://picture.com" class="form-control input-md">
@@ -137,6 +144,7 @@
             </section>
         </div>
         <!-- end modal -->
+
 
         <!-- ResultsPage Template -->
 
@@ -197,11 +205,37 @@
 
 <script id='storys-template' type='text/x-handlebars-template'>
           \{{#each this}}
+          <!-- Modal Add Story -->
+          <div id="modalNewStory" class="modal">
+              <div class="modal-content">
+                  <section id='newStoryForm' class="container">
+                      <form>
+                          <div class="form-group">
+                              <label class="col-md-4 control-label" for="address1">What is your story about this clinic?</label>
+                              <div class="col-md-4">
+                                  <input id="textbox" name="address1" type="text" placeholder="20 Main St" class="form-control input-md">
+                              </div>
+                          </div>
+
+              </div>
+              <div class="modal-footer">
+                  <div class="form-group">
+                      <div class="col-md-4">
+                          <button id="submitNewStoryBtn" name="singlebutton" class="btn btn-primary">Submit</button>
+                      </div>
+                  </div>
+              </div>
+              </fieldset>
+              </form>
+              </section>
+          </div>
+          <!-- end modal -->
+
             <div class="row">
                 <div class="col s10">
                     <div class="row valign-wrapper">
                         <h2 class="header subHeader storyHeadline">What is having an abortion here like?</h2>
-                        <button id="submitNewStoryBtn" name="singlebutton" class="valign btn btn-primary">Add Your Own Story</button>
+                        <a class="waves-effect waves-light btn modal-trigger right top" href="#modalNewStory">Add Your Own Story</a>
                     </div>
                     <div class="row">
                         <div class="card horizontal">
