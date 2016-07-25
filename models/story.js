@@ -12,6 +12,7 @@ var StorySchema = new Schema({
       ref: 'Clinic'
     },
     date_posted: String,
+    clinicName: String,
 });
 
 var Story = mongoose.model('Story', StorySchema);

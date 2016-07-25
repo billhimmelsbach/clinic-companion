@@ -73,11 +73,13 @@ var storys_list = [{
 	story_content: "I had my abortion a week and a half ago. And it wasn't the terrible horror story people tell you. I'm only 21. I just got promoted to assistant manager at my work. I just now am able to pay for myself. Not anything else. The father was an ex of mine but we're still really good friends and do it from time to time. And I got pregnant.\b\bI've always been pro choice. But I never knew how to go about it. I went to a clinic that was a crisis pregnancy center and I didn't even know it. I told them I was thinking about getting an abortion. They didn't like judge me harshly but they did give me really bad information such as: pieces of the fetus will be left behind and they'll scrap out your uterus. Which kind of scared me. But I figured I should go to the actual clinic to hear from people who actually do it. And they were really nice and compassionate. In fact many of them were patients there. The pre-counsel session was really nice. And they asked me about the clinic-that I didn't know was cpc - and the woman told me it was false. That there's no metal that goes past the cervix.\b\bAfter a week (because of Memorial Day) I had it done. It wasn't painful. It wasn't terrible. Then again I was on painkillers. But it wasn't a horror story at all. I was crampy real bad the rest of the day. And I still was crampy for about a week but not bad at all. I was able to resume my life the next day. And honestly I have no regrets. And I just want women to know that it isn't a terrifying thing that happens to your body. And to get the facts straight from the source.",
   username: "ashley@exampleemail.com",
 	date_posted: currentTime,
+  clinicName: "Planned Parenthood - West Oakland",
 },
 {
 	story_content: "I am 30 happily married with two little ones, I had already made up my mind after giving birth to my 2nd that I was done two was enough for me! Unfortunately we were not careful enough and I saw those two lines. My heart didn't drop I didn't feel anxious or sad I just knew what the right decision for me was.\b\bToday I went for the procedure as it would be 'quick' and I could have an iud put in at the same time. After a quick chat with a counselor it was on to the next step. They did an ultrasound and this is where it went a bit different, using both methods they could not see an embryo so they had me take another pregnancy test which came in positive. The nurse had quick chat with the doc they figured that I had either already miscarried (as they saw a bit of 'junk' in my uterus but no sack or embryo) or there was a possibility that it's ectopic.\b\bThe doc suggested that they still do the d&c to get whatever was in there out (as passing this may disrupt the iud) and have me take a blood test a few days later to see if the levels of P hormone decrease. I choose not to be sedated. I didn't feel pain at any point. Discomfort when they put the scapula in an a little poke when they numb the cervix, the rest just felt like pressure an a little weird. I did not want to feel dopey/sleepy and I didn't, I had very mild cramps for the 30m they make you wait after but felt fine after. What ever decision you make is what's right for you. I'm not sure if I mentally feel like I had the abortion as they didn't see anything but I still feel at peace with my decision an of course I am hoping it's not ectopic!!",
 	username: "jane@exampleemail.com",
 	date_posted: currentTime,
+  clinicName: "FPA Women’s Health - Oakland",
 },
 ];
 
@@ -97,6 +99,7 @@ var users_list = [{
 	hash: "ddf997ad91749ccd7b1321e8479e4f61ca474899d71bab9127c89a55d3ffe5a131dd033824118f325e23a81c843b475ce891e167596b450027d495026ba54740ef66e997c189cebb9322ab218e79240c10685af1ab0a3b38dee2603d48815d814cb7e16f474edbf690614b8a58d789b3ff32b381a36d7bf1de6c1c97b85fe090523260fb44c2669e1e72e1a90b15f0cc26202e9f5c69ee69907dc13adefb31eb2615ea9d533b359f40ee36570d40ae29a99ecf77646b846e4af5ed9c97321be80d6eda62fd5fba989b54e93b45cd8f015d4fcf13bc669de61add28b533ef92f3439a6c0351451fd49b52c9f43bd66f8abd3e24e9452ca0576659f1ffc028350425b3b3ac54397892351db1c8dee4f3af60a2301174462e4b24d309263bbd8c2a68ec051ab60030dea84ea36e36de8615328fd9331a522f6379e8cd7ce3a8a11dc4703472ef1a2efb8dcc70f9e53fce10596c4c6014f10c50ef65b66e8ff103414bfd3dbcd78db91ce531cb7c0a0189c96e48f97745054f4f7f014fbfcdc0536eba4702fee77cfbf7fab9feba598d5ee48ef844d8095f6327bbba1eb2bf4c26f2569290ff2bb5ade39032ccb449a6570d002692e923fa1574916034d03e0d0a5908668a92d83ffb8a022e7d2d8732113435a12bb334365d41c96a9c955c88bea1a27bb4d7c3a97bf2834a6cd65ff785e280721183c62d3d9c09637d3f1bfc5465",
 	date_created: currentTime,
 }, ];
+
 db.Clinic.remove({}, function(err, clinics) {
 	console.log('removed all clinics');
 	clinics_list.forEach(function(clinicData) {
@@ -143,15 +146,13 @@ db.User.remove({}, function(err, users) {
     console.log('recreated all users');
     console.log("created", users.length, "users");
 
-
-
     db.Story.remove({}, function(err, storys){
       console.log('removed all storys');
       storys_list.forEach(function (storyData) {
         var story = new db.Story({
           story_content: storyData.story_content,
         	username: storyData.username,
-        	clinic: storyData.clinic,
+        	clinicName: storyData.clinicName,
         	date_posted: currentTime,
         });
         db.User.findOne({username: storyData.username}, function (err, foundUser) {
