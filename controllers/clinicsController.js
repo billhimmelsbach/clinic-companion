@@ -37,9 +37,12 @@ function findNearest(req, res, next) {
 
 function create(req, res) {
   var newClinic = req.body;
-  db.Clinic.create(newClinic, function (err, newClinic) {
+  console.log(newClinic);
+  console.log("FIRE!");
+  console.log(req.body);
+  db.Clinic.create(newClinic, function (err, clinicThing) {
     if (err) {res.sendStatus(404);}
-    res.json(newClinic);
+    res.json(clinicThing);
   });
 }
 

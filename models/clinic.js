@@ -24,7 +24,7 @@ var ClinicSchema = new Schema({
     	type: [Number],  //long, lat
     	index: '2d'
 		},
-    stories: {type: Schema.Types.ObjectId, ref: 'Story'},
+    // storys: {type: Schema.Types.ObjectId, ref: 'Story'},
     // location: {type: Schema.Types.ObjectId, ref: 'Location'},
     image: String,
     date_posted: String,
