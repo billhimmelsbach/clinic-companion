@@ -21,152 +21,151 @@
 </head>
 
 <body>
-  <div class = "fullPageContainer">
-  <div id="floating-panel" class="center-align">
-     <input id="address" type="textbox" value="" placeholder="Oakland, CA" required>
-     <input id="submit" type="button" value="Search">
-   </div>
-   <a class="waves-effect waves-light btn modal-trigger modal-test right top" href="#modalNewClinic">Admin</a>
-   <br>
-   <div class="floatMap">
-   <div id="map"></div>
-  </div>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkucwHjlesE88fzV0H4Dgn-S4JeIiS9XA&callback=initMap">
-  </script>
-
-    <!-- Modal Structure -->
-    <div id="modalNewClinic" class="modal">
-        <div class="modal-content">
-            <section id='newClinicForm' class="container">
-                <form>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="address1">Address 1</label>
-                        <div class="col-md-4">
-                            <input id="textinput" name="address1" type="text" placeholder="20 Main St" class="form-control input-md">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="address2">Address 2</label>
-                        <div class="col-md-4">
-                            <input id="textinput" name="address2" type="text" placeholder="Building 2" class="form-control input-md">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="address3">Address 3</label>
-                        <div class="col-md-4">
-                            <input id="textinput" name="address3" type="text" placeholder="Suite 7" class="form-control input-md">
-                        </div>
-                    </div>
+    <div class="fullPageContainer">
+        <div id="floating-panel" class="center-align">
+            <input id="address" type="textbox" value="" placeholder="Oakland, CA" required>
+            <input id="submit" type="button" value="Search">
         </div>
-        <div class="modal-footer">
-            <div class="form-group">
-                <div class="col-md-4">
-                    <button id="submitNewClinicBtn" name="singlebutton" class="btn btn-primary">Submit</button>
+        <a class="waves-effect waves-light btn modal-trigger modal-test right top" href="#modalNewClinic">Admin</a>
+        <br>
+        <div class="floatMap">
+            <div id="map"></div>
+        </div>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkucwHjlesE88fzV0H4Dgn-S4JeIiS9XA&callback=initMap">
+        </script>
+
+        <!-- Modal Structure -->
+        <div id="modalNewClinic" class="modal">
+            <div class="modal-content">
+                <section id='newClinicForm' class="container">
+                    <form>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="address1">Address 1</label>
+                            <div class="col-md-4">
+                                <input id="textinput" name="address1" type="text" placeholder="20 Main St" class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="address2">Address 2</label>
+                            <div class="col-md-4">
+                                <input id="textinput" name="address2" type="text" placeholder="Building 2" class="form-control input-md">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="address3">Address 3</label>
+                            <div class="col-md-4">
+                                <input id="textinput" name="address3" type="text" placeholder="Suite 7" class="form-control input-md">
+                            </div>
+                        </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <button id="submitNewClinicBtn" name="singlebutton" class="btn btn-primary">Submit</button>
+                    </div>
                 </div>
             </div>
+            </fieldset>
+            </form>
+            </section>
         </div>
-        </fieldset>
-        </form>
-        </section>
-    </div>
-    <!-- end modal -->
+        <!-- end modal -->
 
-      <!-- ResultsPage Template -->
+        <!-- ResultsPage Template -->
 
-      <script id='results-template' type='text/x-handlebars-template'>
-        <div class="row">
-        <div class="col s10">
-      <h2 class="header">\{{name}}</h2>
-      <div class="card horizontal">
-        <div class="card-image">
-          <img class="responsive-img" src="\{{image}}">
+        <script id='results-template' type='text/x-handlebars-template'>
+            <div class="row">
+                <div class="col s10">
+                    <h2 class="header">\{{name}}</h2>
+                    <div class="card horizontal">
+                        <div class="card-image">
+                            <img class="responsive-img" src="\{{image}}">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <h4 class="flow-text">\{{address1}}</h4>
+                                <h4 class="flow-text">\{{address2}}</h4>
+                                <h4 class="flow-text">\{{address3}}</h4>
+                                <h4 class="flow-text">\{{city}}, \{{state}} \{{zipcode}}</h4>
+                                <h4 class="flow-text">\{{email}}</h4>
+                                <h4 class="flow-text"> #: \{{phone_number}}</h4>
+                                <a href="\{{website}}">Check Their Website</a>
+
+                            </div>
+                            <div class="card-action">
+                                <a href="\{{book_appointment}}">Make An Appoinment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s10">
+                    <h2 class="header subHeader">How much does an abortion cost?</h2>
+                    <div class="card horizontal">
+                        <div class="card-image valign-wrapper col s3" style="background-image: url('http://www.usnews.com/dims4/USNEWS/9bd3984/2147483647/thumbnail/970x647/quality/85/?url=%2Fcmsmedia%2F45%2F9d9748f17efad09ed5076abf00a556%2F41235FE_DA_MedicalBill_050213.jpg')">
+                            <!-- <img class="costs circle responsive-img valign" src="http://www.usnews.com/dims4/USNEWS/9bd3984/2147483647/thumbnail/970x647/quality/85/?url=%2Fcmsmedia%2F45%2F9d9748f17efad09ed5076abf00a556%2F41235FE_DA_MedicalBill_050213.jpg"> -->
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <p class="flow-text">Abortion prices vary depending on the clinic, method, and time since conception. However, California is one of the few states in the country that mandates that most health insurance plans must cover elective abortion proecedures.
+                                    However, you should call \{{name}} before making an appointment to get a co-pay estimate.
+                                    <br>
+                                    <br> If you currently do not have health insurance, the cost can range from $500 to $2000 depending on how long it has been since conception. If you are worried that you cannot afford the procedure, ask \{{name}} if they
+                                    offer a sliding scale or contact the National Network of Abortion Funds.</p>
+                                <p class="flow-test"> </p>
+                            </div>
+                            <div class="card-action">
+                                <a href="http://clearhealthcosts.com/blog/2014/06/much-abortion-cost-draft-theresas/">Learn More About Abortion Costs</a>
+                                <br>
+                                <br>
+                                <a href="https://fundabortionnow.org/get-help">Contact National Network of Abortion Funds</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s10">
+                    <div class="row valign-wrapper">
+                        <h2 class="header subHeader storyHeadline">What is having an abortion here like?</h2>
+                        <button id="submitNewStoryBtn" name="singlebutton" class="valign btn btn-primary">Add Your Own Story</button>
+                    </div>
+                    <div class="row">
+                        <div class="card horizontal">
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <p class="flow-text">\{{story_content}} I had my abortion a week and a half ago. And it wasn't the terrible horror story people tell you. I'm only 21. I just got promoted to assistant manager at my work. I just now am able to pay for myself.
+                                        Not anything else. The father was an ex of mine but we're still really good friends and do it from time to time. And I got pregnant. I've always been pro choice. But I never knew how to go about it. I went to a
+                                        clinic that was a crisis pregnancy center and I didn't even know it. I told them I was thinking about getting an abortion. They didn't like judge me harshly but they did give me really bad information such as: pieces
+                                        of the fetus will be left behind and they'll scrap out your uterus. Which kind of scared me. But I figured I should go to the actual clinic to hear from people who actually do it. And they were really nice and compassionate.
+                                        In fact many of them were patients there. The pre-counsel session was really nice. And they asked me about the clinic-that I didn't know was cpc - and the woman told me it was false. That there's no metal that goes
+                                        past the cervix. After a week (because of Memorial Day) I had it done. It wasn't painful. It wasn't terrible. Then again I was on painkillers. But it wasn't a horror story at all. I was crampy real bad the rest
+                                        of the day. And I still was crampy for about a week but not bad at all. I was able to resume my life the next day. And honestly I have no regrets. And I just want women to know that it isn't a terrifying thing that
+                                        happens to your body. And to get the facts straight from the source." —Ashley</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+        </script>
+
+        <div id="bottomContent">
         </div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <h4 class="flow-text">\{{address1}}</h4>
-            <h4 class="flow-text">\{{address2}}</h4>
-            <h4 class="flow-text">\{{address3}}</h4>
-            <h4 class="flow-text">\{{city}}, \{{state}} \{{zipcode}}</h4>
-            <h4 class="flow-text">\{{email}}</h4>
-            <h4 class="flow-text"> #: \{{phone_number}}</h4>
-            <a href="\{{website}}">Check Their Website</a>
-
-          </div>
-          <div class="card-action">
-            <a href="\{{book_appointment}}">Make An Appoinment</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-  <div class="col s10">
-<h2 class="header subHeader">How much does an abortion cost?</h2>
-<div class="card horizontal">
-  <div class="card-image valign-wrapper col s3" style="background-image: url('http://www.usnews.com/dims4/USNEWS/9bd3984/2147483647/thumbnail/970x647/quality/85/?url=%2Fcmsmedia%2F45%2F9d9748f17efad09ed5076abf00a556%2F41235FE_DA_MedicalBill_050213.jpg')">
-    <!-- <img class="costs circle responsive-img valign" src="http://www.usnews.com/dims4/USNEWS/9bd3984/2147483647/thumbnail/970x647/quality/85/?url=%2Fcmsmedia%2F45%2F9d9748f17efad09ed5076abf00a556%2F41235FE_DA_MedicalBill_050213.jpg"> -->
-  </div>
-  <div class="card-stacked">
-    <div class="card-content">
-      <p class="flow-text">Abortion prices vary depending on the clinic, method, and time since conception. However, California is one of the few states in the country that mandates that most health insurance plans must cover elective abortion proecedures. However, you should call \{{name}} before making an appointment to get a co-pay estimate.<br><br> If you currently do not have health insurance, the cost can range from $500 to $2000 depending on how long it has been since conception. If you are worried that you cannot afford the procedure, ask \{{name}} if they offer a sliding scale or contact the National Network of Abortion Funds.</p>
-      <p class="flow-test"> </p>
-    </div>
-    <div class="card-action">
-      <a href="http://clearhealthcosts.com/blog/2014/06/much-abortion-cost-draft-theresas/">Learn More About Abortion Costs</a>
-      <br>
-      <br>
-      <a href="https://fundabortionnow.org/get-help">Contact National Network of Abortion Funds</a>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-
-<div class="row">
-<div class="col s10">
-  <div class="row valign-wrapper">
-<h2 class="header subHeader storyHeadline">What is having an abortion here like?</h2>
-<button id="submitNewClinicBtn" name="singlebutton" class="valign btn btn-primary">Add Your Own Story</button>
-</div>
-<div class="row">
-<div class="card horizontal">
-<div class="card-image valign-wrapper col s3" style="background-image: url('http://www.usnews.com/dims4/USNEWS/9bd3984/2147483647/thumbnail/970x647/quality/85/?url=%2Fcmsmedia%2F45%2F9d9748f17efad09ed5076abf00a556%2F41235FE_DA_MedicalBill_050213.jpg')">
-  <!-- <img class="costs circle responsive-img valign" src="http://www.usnews.com/dims4/USNEWS/9bd3984/2147483647/thumbnail/970x647/quality/85/?url=%2Fcmsmedia%2F45%2F9d9748f17efad09ed5076abf00a556%2F41235FE_DA_MedicalBill_050213.jpg"> -->
-</div>
-<div class="card-stacked">
-  <div class="card-content">
-    <p class="flow-text">Abortion prices vary depending on the clinic, method, and time since conception. However, California is one of the few states in the country that mandates that most health insurance plans must cover elective abortion proecedures. However, you should call \{{name}} before making an appointment to get a co-pay estimate.<br><br> If you currently do not have health insurance, the cost can range from $500 to $2000 depending on how long it has been since conception. If you are worried that you cannot afford the procedure, ask \{{name}} if they offer a sliding scale or contact the National Network of Abortion Funds.</p>
-    <p class="flow-test"> </p>
-  </div>
-  <div class="card-action">
-    <a href="http://clearhealthcosts.com/blog/2014/06/much-abortion-cost-draft-theresas/">Learn More About Abortion Costs</a>
-    <br>
-    <br>
-    <a href="https://fundabortionnow.org/get-help">Contact National Network of Abortion Funds</a>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
-
-      </script>
-
-      <div id="bottomContent">
-      </div>
-      <!-- <li class="" style="transform: translateX(0px); opacity: 1;"> -->
+        <!-- <li class="" style="transform: translateX(0px); opacity: 1;"> -->
         <script id='search-template' type='text/x-handlebars-template'>
-          <div id="resultContainer" class="center-align flow-text" data-result-id="\{{_id}}">
-          <div class="row resultsRow center-align">
-          <div class="col s7 offset 3 cardContainer">
-        <div class="card horizontal resultsCard">
-          <div class="card-image">
-            <div class="bigLetter col s1 offset-s4  flow-text">
-              <h1 class="bigLetterHeadline">\{{letter_designation}}<h1>
+            <div id="resultContainer" class="center-align flow-text" data-result-id="\{{_id}}">
+                <div class="row resultsRow center-align">
+                    <div class="col s7 offset 3 cardContainer">
+                        <div class="card horizontal resultsCard">
+                            <div class="card-image">
+                                <div class="bigLetter col s1 offset-s4  flow-text">
+                                    <h1 class="bigLetterHeadline">\{{letter_designation}}<h1>
             </div>
           </div>
           <div class="card-stacked">
