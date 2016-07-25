@@ -36,7 +36,7 @@ var clinics_list = [
       37.805542,
       -122.296026
     ],
-    // stories: {type: Schema.Types.ObjectId, ref: 'Story'},
+    // storys: {type: Schema.Types.ObjectId, ref: 'Story'},
     // location: {type: Schema.Types.ObjectId, ref: 'Location'},
     image: "https://oaklandnorth.net/wp-content/uploads/2013/05/plannedparenthood-620x454.jpg",
     date_posted: currentTime,
@@ -60,7 +60,7 @@ var clinics_list = [
       37.818030,
       -122.265158
     ],
-    // stories: {type: Schema.Types.ObjectId, ref: 'Story'},
+    // storys: {type: Schema.Types.ObjectId, ref: 'Story'},
     // location: {type: Schema.Types.ObjectId, ref: 'Location'},
     image: "http://www.fpawomenshealth.com/wp-content/uploads/2013/10/oakland-ca-480x360.jpg",
     date_posted: currentTime,
@@ -122,7 +122,7 @@ db.Clinic.remove({}, function(err, clinics){
       book_appointment: clinicData.book_appointment,
       social_media: clinicData.social_media,
       loc:clinicData.loc,
-      stories: clinicData.stories,
+      storys: clinicData.storys,
       image: clinicData.image,
       letter_designation: clinicData.letter_designation,
       date_posted: clinicData.date_posted
