@@ -74,11 +74,11 @@ var storys_list = [{
   username: "ashley@exampleemail.com",
 	date_posted: currentTime,
 },
-// {
-// 	story_content: "I am 30 happily married with two little ones, I had already made up my mind after giving birth to my 2nd that I was done two was enough for me! Unfortunately we were not careful enough and I saw those two lines. My heart didn't drop I didn't feel anxious or sad I just knew what the right decision for me was.\b\bToday I went for the procedure as it would be 'quick' and I could have an iud put in at the same time. After a quick chat with a counselor it was on to the next step. They did an ultrasound and this is where it went a bit different, using both methods they could not see an embryo so they had me take another pregnancy test which came in positive. The nurse had quick chat with the doc they figured that I had either already miscarried (as they saw a bit of 'junk' in my uterus but no sack or embryo) or there was a possibility that it's ectopic.\b\bThe doc suggested that they still do the d&c to get whatever was in there out (as passing this may disrupt the iud) and have me take a blood test a few days later to see if the levels of P hormone decrease. I choose not to be sedated. I didn't feel pain at any point. Discomfort when they put the scapula in an a little poke when they numb the cervix, the rest just felt like pressure an a little weird. I did not want to feel dopey/sleepy and I didn't, I had very mild cramps for the 30m they make you wait after but felt fine after. What ever decision you make is what's right for you. I'm not sure if I mentally feel like I had the abortion as they didn't see anything but I still feel at peace with my decision an of course I am hoping it's not ectopic!!",
-// 	username: "anotherpatient@exampleemail.com",
-// 	date_posted: currentTime,
-// },
+{
+	story_content: "I am 30 happily married with two little ones, I had already made up my mind after giving birth to my 2nd that I was done two was enough for me! Unfortunately we were not careful enough and I saw those two lines. My heart didn't drop I didn't feel anxious or sad I just knew what the right decision for me was.\b\bToday I went for the procedure as it would be 'quick' and I could have an iud put in at the same time. After a quick chat with a counselor it was on to the next step. They did an ultrasound and this is where it went a bit different, using both methods they could not see an embryo so they had me take another pregnancy test which came in positive. The nurse had quick chat with the doc they figured that I had either already miscarried (as they saw a bit of 'junk' in my uterus but no sack or embryo) or there was a possibility that it's ectopic.\b\bThe doc suggested that they still do the d&c to get whatever was in there out (as passing this may disrupt the iud) and have me take a blood test a few days later to see if the levels of P hormone decrease. I choose not to be sedated. I didn't feel pain at any point. Discomfort when they put the scapula in an a little poke when they numb the cervix, the rest just felt like pressure an a little weird. I did not want to feel dopey/sleepy and I didn't, I had very mild cramps for the 30m they make you wait after but felt fine after. What ever decision you make is what's right for you. I'm not sure if I mentally feel like I had the abortion as they didn't see anything but I still feel at peace with my decision an of course I am hoping it's not ectopic!!",
+	username: "jane@exampleemail.com",
+	date_posted: currentTime,
+},
 ];
 
 var users_list = [{
@@ -168,6 +168,20 @@ db.User.remove({}, function(err, users) {
             console.log('saved ' + savedStory.username + ' by ' + foundUser.username);
           });
         });
+        // db.Clinic.findOne({username: storyData.username}, function (err, foundUser) {
+        //   console.log('found user ' + foundUser.username + ' for story ' + storyData.username);
+        //   if (err) {
+        //     console.log(err);
+        //     return;
+        //   }
+        //   story.username = foundUser;
+        //   story.save(function(err, savedStory){
+        //     if (err) {
+        //       return console.log(err);
+        //     }
+        //     console.log('saved ' + savedStory.username + ' by ' + foundUser.username);
+        //   });
+        // });
       });
     });
 
