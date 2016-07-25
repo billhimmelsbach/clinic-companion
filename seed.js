@@ -115,7 +115,7 @@ db.Clinic.remove({}, function(err, clinics) {
 			costs: clinicData.costs,
 			email: clinicData.email,
 			website: clinicData.website,
-			story_appointment: clinicData.story_appointment,
+			book_appointment: clinicData.story_appointment,
 			social_media: clinicData.social_media,
 			loc: clinicData.loc,
 			storys: clinicData.storys,
