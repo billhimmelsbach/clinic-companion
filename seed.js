@@ -113,9 +113,10 @@ db.User.remove({}, function(err, users) {
       console.log('removed all storys');
       storys_list.forEach(function (storyData) {
         var story = new db.Story({
-          title: storyData.title,
-          image: storyData.image,
-          releaseDate: storyData.releaseDate
+          story_content: storyData.story_content,
+        	username: storyData.username,
+        	clinic: storyData.clinic,
+        	date_posted: currentTime,
         });
         db.User.findOne({username: storyData.username}, function (err, foundUser) {
           console.log('found user ' + foundUser.username + ' for story ' + storyData.username);
