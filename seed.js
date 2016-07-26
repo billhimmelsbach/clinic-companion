@@ -46,6 +46,24 @@ var clinics_list = [{
 	date_posted: currentTime,
 	letter_designation: "",
 }, {
+	name: "Family Planning Specialists",
+	address1: "200 Webster St.",
+	city: "Oakland",
+	state: "CA",
+	zipcode: "94607",
+	phone_number: "510-268-3720",
+	costs: "",
+	email: "",
+	website: "https://familyplanningspecialists.com/",
+	loc: [
+		37.795360, -122.273467
+	],
+	// storys: {type: Schema.Types.ObjectId, ref: 'Story'},
+	// location: {type: Schema.Types.ObjectId, ref: 'Location'},
+	image: "https://s3-media3.fl.yelpcdn.com/bphoto/uVfw5o6fvOvv_UuyefiTag/ls.jpg",
+	date_posted: currentTime,
+	letter_designation: "",
+}, {
 	name: "FPA Women’s Health - Oakland",
 	address1: "400 29th St.",
 	address2: "#301",
