@@ -45,27 +45,6 @@ var clinics_list = [{
 	image: "https://oaklandnorth.net/wp-content/uploads/2013/05/plannedparenthood-620x454.jpg",
 	date_posted: currentTime,
 	letter_designation: "",
-},
-{
-	name: "Planned Parenthood - West Oakland",
-	address1: "1682 7th St.",
-	address2: "",
-	address3: "",
-	city: "Oakland",
-	state: "CA",
-	zipcode: "94607",
-	phone_number: "510-300-3800",
-	costs: "",
-	email: "",
-	website: "https://www.plannedparenthood.org/health-center/california/oakland/94607/west-oakland-4090-90130?utm_campaign=west-oakland-health-center&utm_medium=organic&utm_source=local-listing",
-	book_appointment: "https://docasap.com/center/209315/-1/0/0/0/PPFA/9390684/0/0",
-	social_media: "",
-	loc: [
-		37.805542, -122.296026
-	],
-	image: "https://s3-media3.fl.yelpcdn.com/bphoto/ptfclNLnSB_AA-S0HUarCA/ls.jpg",
-	date_posted: currentTime,
-	letter_designation: "",
 },{
 	name: "Family Planning Specialists",
 	address1: "200 Webster St.",

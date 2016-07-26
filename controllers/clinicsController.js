@@ -5,7 +5,7 @@
 var db = require('../models');
 
 function findNearest(req, res, next) {
-    var limit = req.query.limit || 10;
+    var limit = req.query.limit || 3;
 
     // get the max distance or set it to 1000 kilometers
     var maxDistance = req.query.distance || 1000;
@@ -51,7 +51,6 @@ function index(req, res) {
   //  return res.sendStatus(401);
   // }
   db.Clinic.find({})
-    // .populate('location')
     .exec(function(err, clinics) {
         if (err) { res.sendStatus(404); }
         res.json(clinics);
@@ -60,7 +59,6 @@ function index(req, res) {
 
 function show(req, res) {
   db.Clinic.findById(req.params.clinicId)
-    // .populate('location')
     .exec(function(err, clinic) {
         if (err) { res.sendStatus(404); }
         res.json(clinic);
@@ -70,7 +68,6 @@ function show(req, res) {
 
 function destroy(req, res) {
   db.Clinic.findOneAndRemove({_id: req.params.clinicId})
-    // .populate('location')
     .exec(function(err, clinic){
 		if (err) {
 			res.sendStatus(404);
