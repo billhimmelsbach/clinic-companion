@@ -44,4 +44,4 @@
 
 ---
 
-![gitDASH!](img/screenshot.png?raw=true "gitDASH!")
+![clinic-companion](img/screenshot.png?raw=true "clinic-companion")
