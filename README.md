@@ -44,4 +44,4 @@
 
 ---
 
-![clinic-companion](screenshot.png "clinic-companion")
+![clinic-companion:](https://i.imgur.com/os2b2VZ.png "clinic-companion")
