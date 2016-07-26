@@ -35,7 +35,7 @@ var clinics_list = [{
 	costs: "",
 	email: "",
 	website: "https://www.plannedparenthood.org/health-center/california/oakland/94607/west-oakland-4090-90130?utm_campaign=west-oakland-health-center&utm_medium=organic&utm_source=local-listing",
-	story_appointment: "https://docasap.com/center/209315/-1/0/0/0/PPFA/9390684/0/0",
+	book_appointment: "https://docasap.com/center/209315/-1/0/0/0/PPFA/9390684/0/0",
 	social_media: "",
 	loc: [
 		37.805542, -122.296026
@@ -46,6 +46,51 @@ var clinics_list = [{
 	date_posted: currentTime,
 	letter_designation: "",
 }, {
+	name: "Planned Parenthood - San Francisco Health Center",
+	address1: "1650 Valencia St",
+	address2: "",
+	address3: "",
+	city: "San Francisco",
+	state: "CA",
+	zipcode: "94110",
+	phone_number: "415-821-1282",
+	costs: "",
+	email: "",
+	website: "https://www.plannedparenthood.org/health-center/california/san-francisco/94110/san-francisco-health-center-3997-90200",
+	book_appointment: "https://www.plannedparenthood.org/health-center/california/san-francisco/94110/san-francisco-health-center-3997-90200",
+	social_media: "",
+	loc: [
+		37.746128, -122.420422
+	],
+	// storys: {type: Schema.Types.ObjectId, ref: 'Story'},
+	// location: {type: Schema.Types.ObjectId, ref: 'Location'},
+	image: "https://oaklandnorth.net/wp-content/uploads/2013/05/plannedparenthood-620x454.jpg",
+	date_posted: currentTime,
+	letter_designation: "",
+},
+{
+	name: "Planned Parenthood - West Oakland",
+	address1: "1682 7th St.",
+	address2: "",
+	address3: "",
+	city: "Oakland",
+	state: "CA",
+	zipcode: "94607",
+	phone_number: "510-300-3800",
+	costs: "",
+	email: "",
+	website: "https://www.plannedparenthood.org/health-center/california/oakland/94607/west-oakland-4090-90130?utm_campaign=west-oakland-health-center&utm_medium=organic&utm_source=local-listing",
+	book_appointment: "https://docasap.com/center/209315/-1/0/0/0/PPFA/9390684/0/0",
+	social_media: "",
+	loc: [
+		37.805542, -122.296026
+	],
+	// storys: {type: Schema.Types.ObjectId, ref: 'Story'},
+	// location: {type: Schema.Types.ObjectId, ref: 'Location'},
+	image: "https://s3-media3.fl.yelpcdn.com/bphoto/ptfclNLnSB_AA-S0HUarCA/ls.jpg",
+	date_posted: currentTime,
+	letter_designation: "",
+},{
 	name: "Family Planning Specialists",
 	address1: "200 Webster St.",
 	city: "Oakland",
@@ -55,6 +100,7 @@ var clinics_list = [{
 	costs: "",
 	email: "",
 	website: "https://familyplanningspecialists.com/",
+book_appointment: "https://familyplanningspecialists.com/",
 	loc: [
 		37.795360, -122.273467
 	],
@@ -75,7 +121,7 @@ var clinics_list = [{
 	costs: "",
 	email: "",
 	website: "http://www.fpawomenshealth.com/locations/oakland-ca/",
-	story_appointment: "https://docasap.com/center/206418/0/0/0/0/FPA/2430989/0",
+	book_appointment: "https://docasap.com/center/206418/0/0/0/0/FPA/2430989/0",
 	social_media: "",
 	loc: [
 		37.818030, -122.265158
@@ -134,7 +180,7 @@ db.Clinic.remove({}, function(err, clinics) {
 			costs: clinicData.costs,
 			email: clinicData.email,
 			website: clinicData.website,
-			book_appointment: clinicData.story_appointment,
+			book_appointment: clinicData.book_appointment,
 			social_media: clinicData.social_media,
 			loc: clinicData.loc,
 			storys: clinicData.storys,
