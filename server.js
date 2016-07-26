@@ -18,9 +18,7 @@
 //ADJUST MAP FOR NEW MARKERS ZOOM
 
 
-/////////////////////////////
-//  SETUP and CONFIGURATION
-/////////////////////////////
+//CONFIG
 
 //require express in our app
 var express = require('express'),
@@ -115,9 +113,9 @@ app.post('/signup', function (req, res) {
     }
   );
 });
-////////////////////
-//  ROUTES
-///////////////////
+
+//ROUTES
+
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });

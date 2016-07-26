@@ -1,27 +1,9 @@
-// This file allows us to seed our application with data
-// simply run: `node seed.js` from the root of this project folder.
-
 //TODO
 //Are they open now?
 //TODO
-// function ObjectIdCreate(string) {
-//   var ObjectId = require('mongoose').Types.ObjectId;
-//   var myObjectId = ObjectId.fromString(string);
-//   return myObjectId;
-// }
-
 
 var db = require('./models');
 var currentTime = new Date();
-// var locations_list = [
-//   {
-//     name: Test,
-//     loc: {
-//       type: [Number],
-//       index: '2d'
-//     }
-//   }
-// ];
 
 var clinics_list = [{
 	name: "Planned Parenthood - West Oakland",
@@ -40,8 +22,6 @@ var clinics_list = [{
 	loc: [
 		37.805542, -122.296026
 	],
-	// storys: {type: Schema.Types.ObjectId, ref: 'Story'},
-	// location: {type: Schema.Types.ObjectId, ref: 'Location'},
 	image: "https://oaklandnorth.net/wp-content/uploads/2013/05/plannedparenthood-620x454.jpg",
 	date_posted: currentTime,
 	letter_designation: "",
@@ -62,8 +42,6 @@ var clinics_list = [{
 	loc: [
 		37.746128, -122.420422
 	],
-	// storys: {type: Schema.Types.ObjectId, ref: 'Story'},
-	// location: {type: Schema.Types.ObjectId, ref: 'Location'},
 	image: "https://oaklandnorth.net/wp-content/uploads/2013/05/plannedparenthood-620x454.jpg",
 	date_posted: currentTime,
 	letter_designation: "",
@@ -85,8 +63,6 @@ var clinics_list = [{
 	loc: [
 		37.805542, -122.296026
 	],
-	// storys: {type: Schema.Types.ObjectId, ref: 'Story'},
-	// location: {type: Schema.Types.ObjectId, ref: 'Location'},
 	image: "https://s3-media3.fl.yelpcdn.com/bphoto/ptfclNLnSB_AA-S0HUarCA/ls.jpg",
 	date_posted: currentTime,
 	letter_designation: "",
@@ -104,8 +80,6 @@ book_appointment: "https://familyplanningspecialists.com/",
 	loc: [
 		37.795360, -122.273467
 	],
-	// storys: {type: Schema.Types.ObjectId, ref: 'Story'},
-	// location: {type: Schema.Types.ObjectId, ref: 'Location'},
 	image: "https://s3-media3.fl.yelpcdn.com/bphoto/uVfw5o6fvOvv_UuyefiTag/ls.jpg",
 	date_posted: currentTime,
 	letter_designation: "",
@@ -126,8 +100,6 @@ book_appointment: "https://familyplanningspecialists.com/",
 	loc: [
 		37.818030, -122.265158
 	],
-	// storys: {type: Schema.Types.ObjectId, ref: 'Story'},
-	// location: {type: Schema.Types.ObjectId, ref: 'Location'},
 	image: "http://www.fpawomenshealth.com/wp-content/uploads/2013/10/oakland-ca-480x360.jpg",
 	date_posted: currentTime,
 	letter_designation: "",
@@ -254,104 +226,3 @@ db.User.remove({}, function(err, users) {
   });
 });
 }, 4000);
-
-//
-// db.Location.remove({}, function(err, locations) {
-//   console.log('removed all locations');
-//   db.Location.create(locations_list, function(err, locations){
-//     if (err) {
-//       console.log(err);
-//       return;
-//     }
-//     console.log('recreated all locations');
-//     console.log("created", locations.length, "locations");
-//   });
-// });
-// db.User.remove({}, function(err, users) {
-// 	console.log('removed all users');
-// 	users_list.forEach(function(userData) {
-// 		var newUser = new db.User({
-// 			username: userData.username,
-// 			salt: userData.salt,
-// 			hash: userData.hash,
-// 			date_created: userData.date_created,
-// 		});
-// 		newUser.save(function(err, savedUser) {
-// 			if (err) {
-// 				return console.log(err);
-// 			}
-// 			console.log("ok!");
-// 			console.log('saved user ' + savedUser.username);
-// 		});
-// 	});
-// });
-// console.log("!!!ALL USERS CREATED!!!");
-//
-//
-
-//
-// setTimeout(function(){
-//   db.Story.remove({}, function(err, storyData, index) {
-//     console.log('removed all storys');
-//     storys_list.forEach(function(storyData) {
-//       var newStory = new db.Story({
-//       	story_content: storyData.story_content,
-//       	username: storyData.username,
-//       	clinic: storyData.clinic,
-//       	date_posted: currentTime,
-//       });
-//       console.log(storyData.username);
-//       console.log(storyData);
-//       console.log(newStory);
-//       db.User.findOne({username: storyData.username}, function(err, foundUser) {
-//       	console.log('found user ' + foundUser.username + ' for story ' + storyData.username);
-//       	if (err) {
-//       		console.log(err);
-//       		return;
-//       	}
-//       	console.log("WUUUT");
-//       	newStory.username = foundUser;
-//         console.log("!!190!!"+newStory+"!!190!!");
-//
-//       	newStory.save(function(err, savedStory) {
-//       		if (err) {
-//       			return console.log(err);
-//       		}
-//       		console.log("ok!");
-//       		console.log('saved ' + savedStory.username);
-//           console.log('saved ' + savedStory);
-//       	});
-//       });
-//
-//     });
-//   });
-//   console.log("!!!ALL STORYS CREATED!!!");
-// }, 4000);
-
-  // newStory.save(function(err, savedStory) {
-  //   if (err) {
-  //     return console.log(err);
-  //   }
-  //   console.log("ok!");
-  //   console.log('saved story ' + savedStory._id);
-  // });
-
-// db.Location.findOne({name: clinicData.location}, function (err, foundLocation) {
-//   // console.log('found location ' + foundLocation.name + ' for clinic ' + clinic.title);
-//   if (err) {
-//     console.log(err);
-//     return;
-//   }
-//   clinic.location = foundLocation;
-
-//Save function with console log that references location
-// clinic.save(function(err, savedClinic){
-//   if (err) {
-//     return console.log(err);
-//   }
-//   console.log('saved ' + savedClinic.title + ' by ' + foundLocation.name);
-// });
-//
-
-
-// });
