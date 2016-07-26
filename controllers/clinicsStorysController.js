@@ -6,23 +6,23 @@ var db = require('../models');
 
 function create(req, res) {
   console.log("YAAAY!");
-  var newStory = req.body;
-  console.log(newStory);
+  var storyData = {
+    story_content: req.body.story_content
+  };
+  console.log(storyData);
   var clinicId = req.params.clinicId;
   console.log(clinicId);
-  console.log(newStory);
-  db.Story.create(newStory, function (err, newStory) {
+  db.Story.create(storyData, function (err, createdStory) {
     if (err) {res.sendStatus(404);}
-    res.json(newStory);
-    // db.Clinic.findById(clinicId, function (err, clinicFound) {
-    // console.log(clinicFound);
-    // console.log(newStory);
-    // newStory.clinic.push(clinicFound);
-    // db.Story.create(newStory, function (err, newStory) {
-    //   if (err) {res.sendStatus(404);}
-    //   res.json(newStory);
-    //     });
-    // });
+    db.Clinic.findById(clinicId, function (err, clinicFound) {
+    console.log(clinicFound);
+    console.log(createdStory);
+    createdStory.clinic = clinicFound;
+    createdStory.save(function (err, finalStory) {
+      if (err) {res.sendStatus(404);}
+      res.json(finalStory);
+        });
+    });
   });
 }
 
