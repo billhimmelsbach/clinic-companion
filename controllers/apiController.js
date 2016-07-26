@@ -1,6 +1,6 @@
 function index(req, res) {
   res.json({
-    message: "Clinic Companion!",
+    message: "Clinic Companion",
     documentation_url: "https://github.com/billhimmelsbach/clinic-companion/blob/master/README.md",
     base_url: "",
     endpoints: [

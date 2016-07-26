@@ -5,16 +5,16 @@
 var db = require('../models');
 
 function findNearest(req, res, next) {
+    // limit or 3
     var limit = req.query.limit || 3;
 
-    // get the max distance or set it to 1000 kilometers
+    // max distance or 100 miles
     var maxDistance = req.query.distance || 1000;
 
-    // we need to convert the distance to radians
-    // the raduis of Earth is approximately 6371 kilometers
+    //convert to radians by dividing by the radius of the earth
     maxDistance /= 6371;
 
-    // get coordinates [ <longitude> , <latitude> ]
+    // get latLng
     var coords = [];
     coords[0] = req.query.longitude || 0;
     coords[1] = req.query.latitude || 0;
@@ -23,13 +23,11 @@ function findNearest(req, res, next) {
     db.Clinic.find({
       loc: {
         $near: coords,
-        // $maxDistance: maxDistance
       }
     }).limit(limit).exec(function(err, locations) {
       if (err) {
         return res.sendStatus(500);
       }
-
       res.json(locations);
     });
   }

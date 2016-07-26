@@ -10,9 +10,6 @@ function create(req, res) {
 }
 
 function index(req, res) {
-  // if (req.user!=="admin") {
-  //  return res.sendStatus(401);
-  // }
   db.Story.find({})
     .populate('username')
     .populate('clinic')
@@ -31,7 +28,6 @@ function show(req, res) {
         res.json(story);
     });
 }
-
 
 function destroy(req, res) {
   db.Story.findOneAndRemove({_id: req.params.storyId})

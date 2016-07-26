@@ -1,19 +1,3 @@
-//TODO
-//changing between signup and signin without page changes
-//one admin, or one boolean
-//prevent idential usernames?
-
-//set a variable that is equal to the window.user
-//put a hidden input tag that adds the current user into the post
-//when I do the get, only show those posts
-//also, per clinic, another hidden input button that is set to the clinic itself
-//filter by that as well
-//your id is user._id
-//{{#if admin}} show the buttons, else do note
-//{{if user}} then show normal page {{else}} show login
-//
-//ADJUST MAP FOR NEW MARKERS ZOOM
-
 
 //CONFIG
 
@@ -116,7 +100,6 @@ app.post('/signup', function (req, res) {
 app.get('/', function homepage (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
-
 app.get('/api', controllers.api.index);
 app.get('/api/clinics', controllers.clinics.index);
 app.get('/api/clinics/:clinicId', controllers.clinics.show);

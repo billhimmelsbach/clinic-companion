@@ -1,10 +1,6 @@
 var mongoose = require('mongoose'),
 Schema = mongoose.Schema;
 
-//TODO
-//check on if a data base entry has not been updated
-//TODO
-
 var ClinicSchema = new Schema({
 	  name: String,
 	  address1: String,

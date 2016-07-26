@@ -1,7 +1,3 @@
-//TODO
-//Are they open now?
-//TODO
-
 var db = require('./models');
 var currentTime = new Date();
 
@@ -201,7 +197,6 @@ db.User.remove({}, function(err, users) {
         });
       });
     });
-
   });
 });
 }, 4000);

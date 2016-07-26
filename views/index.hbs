@@ -72,7 +72,8 @@
             </section>
         </div>
         <!-- end modal -->
-        <!-- Modal Structure -->
+
+        <!-- Modal New Clinic -->
         <div id="modalNewClinic" class="modal">
             <div class="modal-content">
                 <section id='newClinicForm' class="container">
@@ -182,10 +183,7 @@
         </div>
         <!-- end modal -->
 
-
-
         <!-- ResultsPage Template -->
-
         <script id='results-template' type='text/x-handlebars-template'>
             <div class="row">
                 <div class="col s10">
@@ -265,6 +263,7 @@
                 \{{/each}}
         </script>
 
+<!-- template for single story -->
         <script id='story-singular-template' type='text/x-handlebars-template'>
                 <div class="row">
                     <div class="col s10">
@@ -287,9 +286,7 @@
                 </div>
         </script>
 
-
-
-
+<!-- bottom content container -->
         <div id="bottomContent">
         </div>
         <div id="storyContent">
@@ -303,25 +300,25 @@
                             <div class="card-image">
                                 <div class="bigLetter col s1 offset-s4  flow-text">
                                     <h1 class="bigLetterHeadline">\{{letter_designation}}<h1>
-            </div>
-          </div>
-          <div class="card-stacked">
-            <div class="card-content noMargin noPadding">
-              <h4 class="flow-text">\{{name}}<h4>
-              <h4 class="flow-text">\{{address1}}</h4>
-              <h4 class="flow-text">\{{address2}}</h4>
-              <h4 class="flow-text">\{{address3}}</h4>
-            </div>
-            <div class="card-action">
-              <a href='#' class="flow-text learnMoreButton">Learn More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      </div>
+                                </div>
+                            </div>
+                            <div class="card-stacked">
+                              <div class="card-content noMargin noPadding">
+                                <h4 class="flow-text">\{{name}}<h4>
+                                <h4 class="flow-text">\{{address1}}</h4>
+                                <h4 class="flow-text">\{{address2}}</h4>
+                                <h4 class="flow-text">\{{address3}}</h4>
+                              </div>
+                              <div class="card-action">
+                                <a href='#' class="flow-text learnMoreButton">Learn More</a>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+                </div>
         </script>
-  </div>
-</body>
+      </div>
+  </body>
 
 </html>

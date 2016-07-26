@@ -54,6 +54,7 @@ function renderUserPage(user) {
 	// Materialize.showStaggeredList('#staggered-results');
 }
 
+//intitialize google map
 function initMap() {
 	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 12,
@@ -71,6 +72,7 @@ function initMap() {
 	});
 }
 
+//geocode search parameters
 function geocodeAddress(geocoder, resultsMap) {
 	var loc = [];
 	var bounds = new google.maps.LatLngBounds();
@@ -82,7 +84,7 @@ function geocodeAddress(geocoder, resultsMap) {
 			resultsMap.setCenter(results[0].geometry.location);
 			loc[0] = results[0].geometry.location.lat();
 			loc[1] = results[0].geometry.location.lng();
-		 	// the place where loc contains geocoded coordinates
+			// the place where loc contains geocoded coordinates
 			$.get('/api/locations?longitude=' + loc[0] + '&latitude=' + loc[1]).success(function(clinicsNearby) {
 				$.each(clinicsNearby, function(index, data) {
 					var latLng = new google.maps.LatLng(data.loc[0], data.loc[1]);
@@ -118,17 +120,19 @@ $(document).ready(function() {
 		text = text.replace(/(\r\n|\n|\r)/gm, '<br>');
 		return new Handlebars.SafeString(text);
 	});
+
+	//click listeners
 	$('body').on('click', '.learnMoreButton', function(e) {
 		var resultId = $('#resultContainer').data('result-id');
 		$.get('/api/clinics/' + resultId).success(function(result) {
-      $.get('/api/clinics/' + resultId + '/storys').success(function(storyResult) {
-			var resultToBeShown = result;
-			$('.floatMap').fadeOut('slow');
-			$('#bottomContent').fadeOut('slow', function() {
-				renderResultsPage(resultToBeShown);
+			$.get('/api/clinics/' + resultId + '/storys').success(function(storyResult) {
+				var resultToBeShown = result;
+				$('.floatMap').fadeOut('slow');
+				$('#bottomContent').fadeOut('slow', function() {
+					renderResultsPage(resultToBeShown);
 					renderStorys(storyResult);
-				$('#bottomContent').fadeIn('slow');
-      });
+					$('#bottomContent').fadeIn('slow');
+				});
 			});
 		});
 	});
@@ -143,8 +147,10 @@ $(document).ready(function() {
 		event.preventDefault();
 		var clinicId = $('body #idContainer').data('result-id');
 		// var resultId = $('#resultContainer').data('result-id');
-		var textareaData = {story_content:$('#storyContentInput').val()};
-		$.post('/api/clinics/'+clinicId+'/storys', textareaData, function(result) {
+		var textareaData = {
+			story_content: $('#storyContentInput').val()
+		};
+		$.post('/api/clinics/' + clinicId + '/storys', textareaData, function(result) {
 			$(this).trigger("reset");
 			$('#modalNewStory').closeModal();
 			renderNewStorys(result);
@@ -154,13 +160,11 @@ $(document).ready(function() {
 	$('#newClinicForm form').on('submit', function(event) {
 		event.preventDefault();
 		var formData = $(this).serialize();
-		var longitude= $('#longitudeInput').val();
-		var latitude= $('#latitudeInput').val();
-		var latLng=[latitude, longitude];
+		var longitude = $('#longitudeInput').val();
+		var latitude = $('#latitudeInput').val();
+		var latLng = [latitude, longitude];
 		var loc = "loc=" + latLng + "&";
-		$.post('/api/clinics', formData, function(clinic) {
-		});
-
+		$.post('/api/clinics', formData, function(clinic) {});
 		$(this).trigger("reset");
 		$('#modalNewClinic').closeModal();
 	});
