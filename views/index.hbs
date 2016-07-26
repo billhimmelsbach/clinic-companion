@@ -277,7 +277,27 @@
                 \{{/each}}
         </script>
 
+        <script id='story-singular-template' type='text/x-handlebars-template'>
+                <div class="row">
+                    <div class="col s10">
+                        <div class="row valign-wrapper">
+                            <h2 class="header subHeader storyHeadline">What is having an abortion here like?</h2>
+                            <a id="submitNewStoryButton" class="modal-trigger valign waves-effect btn-primary waves-light btn right top" href="#modalNewStory">Add Your Own Story</a>
+                        </div>
+                        <div class="row">
+                            <div class="card horizontal">
+                                <div class="card-stacked">
+                                    <div class="card-content">
 
+                                        <p class="flow-text">"\{{breaklines story_content}}"</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </script>
 
 
 

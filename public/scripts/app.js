@@ -53,7 +53,7 @@ function renderNewStorys(storyResult) {
 	console.log(storyResult);
 	// console.log('rendering album', album);
 	//grabs all the HTML from the template
-	var templateHtml = $('#storys-template').html();
+	var templateHtml = $('#story-singular-template').html();
 	console.log(templateHtml);
 	//a function that takes that HTML and compiles it
 	var resultsTemplate = Handlebars.compile(templateHtml);
@@ -225,12 +225,13 @@ $(document).ready(function() {
 		// var resultId = $('#resultContainer').data('result-id');
 		var textareaData = {story_content:$('#storyContentInput').val()};
 		console.log(textareaData);
-		$.post('/api/clinics/'+clinicId+'/storys', textareaData, function(clinic) {
+		$.post('/api/clinics/'+clinicId+'/storys', textareaData, function(result) {
+			$(this).trigger("reset");
 			$('#modalNewStory').closeModal();
+			// console.log(finalStory);
+			console.log("ok!");
+			renderNewStorys(result);
 		});
-		$(this).trigger("reset");
-		// setTimeout
-		renderNewStorys(finalStory);
 
 	});
 
