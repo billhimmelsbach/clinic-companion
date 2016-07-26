@@ -7,6 +7,7 @@ var UserSchema = new Schema({
   salt: String,
   hash: String,
   date_created: String,
+  admin:Boolean,
 });
 
 UserSchema.plugin(passportLocalMongoose);
