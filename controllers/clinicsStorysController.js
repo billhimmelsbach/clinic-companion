@@ -11,13 +11,18 @@ function create(req, res) {
   var clinicId = req.params.clinicId;
   console.log(clinicId);
   console.log(newStory);
-  db.Clinic.findById(clinicId, function (err, clinic) {
-    console.log(clinic);
-    
-    db.Story.create(newStory, function (err, newStory) {
-      if (err) {res.sendStatus(404);}
-      res.json(newStory);
-    });
+  db.Story.create(newStory, function (err, newStory) {
+    if (err) {res.sendStatus(404);}
+    res.json(newStory);
+    // db.Clinic.findById(clinicId, function (err, clinicFound) {
+    // console.log(clinicFound);
+    // console.log(newStory);
+    // newStory.clinic.push(clinicFound);
+    // db.Story.create(newStory, function (err, newStory) {
+    //   if (err) {res.sendStatus(404);}
+    //   res.json(newStory);
+    //     });
+    // });
   });
 }
 
