@@ -4,13 +4,14 @@
 
 var db = require('../models');
 
-// function create(req, res) {
-//   var newStory = req.body;
-//   db.Story.create(newStory, function (err, newStory) {
-//     if (err) {res.sendStatus(404);}
-//     res.json(newStory);
-//   });
-// }
+function create(req, res) {
+  var newStory = req.body;
+  console.log(newStory);
+  db.Story.create(newStory, function (err, newStory) {
+    if (err) {res.sendStatus(404);}
+    res.json(newStory);
+  });
+}
 
 function index(req, res) {
   var storyList=[];

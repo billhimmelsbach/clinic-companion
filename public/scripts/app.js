@@ -202,9 +202,14 @@ $(document).ready(function() {
 		console.log("test");
 		event.preventDefault();
 		console.log("test");
-		var formData = $('#storyContentInput').val();
+		var clinicId = $('body #idContainer').data('result-id');
+		console.log(clinicId);
+		// var resultId = $('#resultContainer').data('result-id');
+		var textareaData = $('#storyContentInput').val();
+		var formData = "story_content="+textareaData+'&clinicId='+clinicId;
 		console.log(formData);
-		$.post('/api/storys', formData, function(clinic) {
+
+		$.post('/api/clinics/:'+clinicId+'/storys?textareaData='+textareaData, function(clinic) {
 		});
 		$(this).trigger("reset");
 		$('#modalNewClinic').closeModal();
