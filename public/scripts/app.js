@@ -2,6 +2,7 @@ console.log("Sanity Check: JS is working!");
 var template;
 var $clinicsList;
 var allClinics = [];
+// <script id='admin-template' type='text/x-handlebars-template'>
 
 function render(result, index) {
 	console.log(result, template);
@@ -59,6 +60,23 @@ function renderResultsPage(result) {
 	console.log(resultsTemplate);
 	//just the HTML of the {{}}s, takes the album and piles them into the appropriate {{}}s
 	var partialAlbumHtml = resultsTemplate(result);
+	console.log(partialAlbumHtml);
+	//adds to the top of the section
+	$('#bottomContent').empty();
+	$('#bottomContent').append(partialAlbumHtml);
+	// Materialize.showStaggeredList('#staggered-results');
+}
+
+function renderUserPage(user) {
+	console.log(user);
+	console.log("74745747474747474747474");
+	var templateHtml = $('#admin-template').html();
+	console.log(templateHtml);
+	//a function that takes that HTML and compiles it
+	var resultsTemplate = Handlebars.compile(templateHtml);
+	console.log(resultsTemplate);
+	//just the HTML of the {{}}s, takes the album and piles them into the appropriate {{}}s
+	var partialAlbumHtml = resultsTemplate(user);
 	console.log(partialAlbumHtml);
 	//adds to the top of the section
 	$('#bottomContent').empty();
@@ -135,6 +153,7 @@ function geocodeAddress(geocoder, resultsMap) {
 }
 
 $(document).ready(function() {
+	renderUserPage(window.user);
 	$('.modal-trigger').leanModal();
 	Handlebars.registerHelper('breaklines', function(text) {
 		text = Handlebars.Utils.escapeExpression(text);
@@ -191,6 +210,7 @@ $(document).ready(function() {
 		var latitude= $('#latitudeInput').val();
 		var latLng=[latitude, longitude];
 		var loc = "loc=" + latLng + "&";
+		// formData.
 		console.log(latLng);
 		console.log(longitude);
 		console.log(latitude);
