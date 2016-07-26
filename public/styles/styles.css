@@ -56,14 +56,10 @@ img {
 #floating-panel {
   background-color: #000000;
   background-image: url("https://www.transparenttextures.com/patterns/gplay.png");
-  /*position: absolute;*/
   margin:auto;
   top: 1%;
-  /*width: auto;*/
-  /*left: 25%;*/
   z-index: 5;
   padding: 5px;
-  /*border: 1px solid #999;*/
   text-align: center;
   font-family: 'Roboto','sans-serif';
   line-height: 30px;
@@ -72,8 +68,6 @@ img {
 li {
   opacity: 0;
       font-size: 1vh;
-  /*color:red;*/
-  /*flex-shrink: 20;*/
 }
 
 .flowText {
@@ -87,29 +81,15 @@ li {
 }
 
 .resultsCard {
-  /*height:20px;*/
 }
 
-/*.resultsContainer {
-  position:absolute !important;
-  bottom:0 !important;
-  left:50% !important;
-}*/
-/*
-.resultsRow{
-  height:20%!important;
-}*/
-
 .submitNewStoryButton {
-
 }
 
 .cardContainer {
   width:100%!important;
   height:20%!important;
   margin:50px!important;
-  /*bottom:0;
-  float: left!important;*/
 }
 
 .storyHeadline {
@@ -117,11 +97,9 @@ li {
 }
 
 #resultContainer {
-  /*position:absolute;*/
   background-color:red;
 }
 .resultsRow {
-  /*height:50%*/
   position:absolute;
   bottom: -5%;
   left:20%;
@@ -130,15 +108,8 @@ li {
 }
 .floatMap {
   z-index: 1000000;
-  /*position: fixed;*/
   top: 15%;
   margin:auto;
   width: 80%;
   height: 60%;
-  /*margin-left: +100%;*/
-  /*border-style: solid;*/
-  /*border-right: 0px;
-  border-width: 4px;
-  border-radius: 3px;
-  border-color: #ff00e4;*/
 }
