@@ -46,21 +46,14 @@ function renderStorys(storyResult) {
 	$('#storyContent').empty();
 	$('#storyContent').append(partialAlbumHtml);
 	$('.modal-trigger').leanModal();
-	// Materialize.showStaggeredList('#staggered-results');
 }
 
 function renderNewStorys(storyResult) {
-	console.log(storyResult);
-	// console.log('rendering album', album);
-	//grabs all the HTML from the template
 	var templateHtml = $('#story-singular-template').html();
-	console.log(templateHtml);
 	//a function that takes that HTML and compiles it
 	var resultsTemplate = Handlebars.compile(templateHtml);
-	console.log(resultsTemplate);
 	//just the HTML of the {{}}s, takes the album and piles them into the appropriate {{}}s
 	var partialAlbumHtml = resultsTemplate(storyResult);
-	console.log(partialAlbumHtml);
 	//adds to the top of the section
 	$('#storyContent').prepend(partialAlbumHtml);
 	$('.modal-trigger').leanModal();
@@ -68,18 +61,9 @@ function renderNewStorys(storyResult) {
 }
 
 function renderResultsPage(result) {
-	console.log(result);
-	// console.log('rendering album', album);
-	//grabs all the HTML from the template
 	var templateHtml = $('#results-template').html();
-	console.log(templateHtml);
-	//a function that takes that HTML and compiles it
 	var resultsTemplate = Handlebars.compile(templateHtml);
-	console.log(resultsTemplate);
-	//just the HTML of the {{}}s, takes the album and piles them into the appropriate {{}}s
 	var partialAlbumHtml = resultsTemplate(result);
-	console.log(partialAlbumHtml);
-	//adds to the top of the section
 	$('#bottomContent').empty();
 	$('#bottomContent').append(partialAlbumHtml);
 	// Materialize.showStaggeredList('#staggered-results');

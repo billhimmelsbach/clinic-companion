@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'),
 Schema = mongoose.Schema;
-  // Location = require('./location');
 
 //TODO
 //check on if a data base entry has not been updated
@@ -21,11 +20,9 @@ var ClinicSchema = new Schema({
     book_appointment: String,
     social_media: String,
 		loc: {
-    	type: [Number],  //long, lat
+    	type: [Number],
     	index: '2d'
 		},
-    // storys: {type: Schema.Types.ObjectId, ref: 'Story'},
-    // location: {type: Schema.Types.ObjectId, ref: 'Location'},
     image: String,
     date_posted: String,
 		letter_designation: String

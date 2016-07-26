@@ -1,12 +1,7 @@
-/************
- * DATABASE *
- ************/
-
 var db = require('../models');
 
 function create(req, res) {
   newStory=req.body;
-  console.log(newStory);
 
   db.Story.create(newStory, function (err, newStory) {
     if (err) {res.sendStatus(404);}
@@ -23,7 +18,6 @@ function index(req, res) {
     .populate('clinic')
     .exec(function(err, storys) {
         if (err) { res.sendStatus(404); }
-        console.log(storys);
         res.json(storys);
     });
 }

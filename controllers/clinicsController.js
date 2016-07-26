@@ -37,9 +37,6 @@ function findNearest(req, res, next) {
 
 function create(req, res) {
   var newClinic = req.body;
-  console.log(newClinic);
-  console.log("FIRE!");
-  console.log(req.body);
   var loc = [req.body.latitude, req.body.longitude];
   newClinic.loc = loc;
   db.Clinic.create(newClinic, function (err, clinicThing) {

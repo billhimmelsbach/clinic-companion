@@ -1,16 +1,41 @@
-# <img src="https://cloud.githubusercontent.com/assets/7833470/10423298/ea833a68-7079-11e5-84f8-0a925ab96893.png" width="60"> Express Practice
+# Racing Game
 
-## Pre-requisites
-
-* express
-* intro to mongoose
-* jQuery and AJAX
-
-## Base Challenges - Build an App using mongoDB and mongoose
-
-We're going to take this app piece by piece over the next day or so and build it up.
-
-At first it's going to be a list of **clinics**.  Later we'll add in **locations** and embed **character** data in each clinic.
+*Git-DASH is a fast-paced racer, designed to poke fun at the often slapdash nature of web development, GitHub, and our tendencies towards procrastination. The technology of Git-DASH connects personally to the player through AJAX requesting their GitHub profile, mimicking their desktop through custom CSS and Bootstrap styling, and creative jQuery utlization ranging from animating instructor avatars to injecting text jokes for a good laugh.*
 
 
-[Sprint 1 - mongoose](docs/sprint1.md)
+## Technologies Used
+
+* Google Map API
+* MongoDB / Mongoose / $.near
+* JavaScript
+* jQuery
+* Materialize CSS
+* AJAX/JSON
+* HTML/CSS
+* Object Orientated Design
+
+
+## Existing Features
+
+* AJAX enabled player customization through GitHub avatars
+* HTML 5 audio during gameplay
+* Persistent scoreboard through jQuery selectors and Object Orientated Design
+* Personalized win screen with GitHub avatar picture
+* AJAX/JSON/GitHub API
+* Object orientated design allows easy player scalability and data portability
+* jQuery animations allow a teacher avatar to give a countdown enabled by setTimeout queuing
+* A combination of Bootstrap, CSS, and jQuery create a mock macOS desktop experience
+
+
+## Planned Features
+
+* More responsive design, particularly for small and large devices with more precise Bootstrap and CSS styling
+* A refactoring run to cut down on repetition. I was able to refactor the AJAX request, but I still need to replace the brute force methods that were inserted due to time constraints with DRY code.
+* Although there is an error message for AJAX server failure, there needs to be a fail message if a player's username doesn't exist as typed. Methods were attempted but failed.
+* COMPLETE: The margin based win condition, while successful at avoiding a global variable, bogs down the system with unnecessary width checks. While the initial impetus was to avoid global variables, this is an instance where one might make the program much more dry and efficient, particularly in four player games and older hardware.
+* More humor through creative use of theme. Instant message overlays, mock Stack Overflow searches, meme based humor in the default icons, etc.
+* A HTML 5 color selector was planned for the player progress bars but cut due to time. The progress bars would also benefit from a progress bar animation.
+
+---
+
+![gitDASH!](img/screenshot.png?raw=true "gitDASH!")
