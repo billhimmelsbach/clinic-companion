@@ -204,11 +204,10 @@ $(document).ready(function() {
 		console.log("test");
 		var formData = $('#storyContentInput').val();
 		console.log(formData);
-		// $.post('/api/stories', formData, function(clinic) {
-		// });
-		//
-		// $(this).trigger("reset");
-		// $('#modalNewClinic').closeModal();
+		$.post('/api/storys', formData, function(clinic) {
+		});
+		$(this).trigger("reset");
+		$('#modalNewClinic').closeModal();
 	});
 
 
