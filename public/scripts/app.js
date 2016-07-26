@@ -199,16 +199,16 @@ $(document).ready(function() {
 	});
 
 	$('body').on('click', '#submitNewStoryBtn', function(event) {
-console.log("test");
+		console.log("test");
 		event.preventDefault();
 		console.log("test");
-		var formData = $(this).serialize();
+		var formData = $('#storyContentInput').val();
 		console.log(formData);
-		$.post('/api/stories', formData, function(clinic) {
-		});
-
-		$(this).trigger("reset");
-		$('#modalNewClinic').closeModal();
+		// $.post('/api/stories', formData, function(clinic) {
+		// });
+		//
+		// $(this).trigger("reset");
+		// $('#modalNewClinic').closeModal();
 	});
 
 
