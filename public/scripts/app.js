@@ -1,26 +1,15 @@
-console.log("Sanity Check: JS is working!");
-var template;
-var $clinicsList;
-var allClinics = [];
-// <script id='admin-template' type='text/x-handlebars-template'>
+//Handlebars Rendering Functions
 
 function render(result, index) {
-	console.log(result, template);
-	// console.log('rendering album', album);
 	//grabs all the HTML from the template
 	var templateHtml = $('#search-template').html();
-	console.log(templateHtml);
 	//a function that takes that HTML and compiles it
 	var resultsTemplate = Handlebars.compile(templateHtml);
-	console.log(resultsTemplate);
 	//just the HTML of the {{}}s, takes the album and piles them into the appropriate {{}}s
 	var partialAlbumHtml = resultsTemplate(result);
-	console.log(partialAlbumHtml);
 	//adds to the top of the section
 	console.log(index);
 	return (partialAlbumHtml);
-	// $('.bigLetterHeadline').empty();
-	// $('.bigLetterHeadline').append(index);
 }
 
 function renderSearchPage(result, index) {
@@ -46,7 +35,6 @@ function renderNewStorys(storyResult) {
 	var partialAlbumHtml = resultsTemplate(storyResult);
 	$('#storyContent').prepend(partialAlbumHtml);
 	$('.modal-trigger').leanModal();
-	// Materialize.showStaggeredList('#staggered-results');
 }
 
 function renderResultsPage(result) {
@@ -161,9 +149,7 @@ $(document).ready(function() {
 			$('#modalNewStory').closeModal();
 			renderNewStorys(result);
 		});
-
 	});
-
 
 	$('#newClinicForm form').on('submit', function(event) {
 		event.preventDefault();

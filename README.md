@@ -1,4 +1,4 @@
-# Clinic Companion: Helping You Find The Right Choice For Abortion Services
+# Clinic Companion: Helping You Find The Right Choice For Your Abortion Services
 
 *When people seek abortive medical services online, they face a confusing mix of search results: questionable and advertisements, anti-choice crisis pregnancy centers masquerading as abortion clinics, and siloed and outdated lists of clinics without user-centric designs. Clinic Companion empowers patients to decide the best choice for them, giving them highly relevant search results from a curated abortion clinic database. By incorporating a forum for the sharing of clinic experiences, linking to financial assistance, and a empathetic user-first design philosophy, Clinic Companion seeks to dismantle the stigma and confusion around making reproductive services decisions.*
 
