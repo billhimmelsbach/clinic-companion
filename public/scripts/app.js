@@ -198,7 +198,18 @@ $(document).ready(function() {
 		// $('.modal').modal();
 	});
 
+	$('body').on('click', '#submitNewStoryBtn', function(event) {
+console.log("test");
+		event.preventDefault();
+		console.log("test");
+		var formData = $(this).serialize();
+		console.log(formData);
+		$.post('/api/stories', formData, function(clinic) {
+		});
 
+		$(this).trigger("reset");
+		$('#modalNewClinic').closeModal();
+	});
 
 
 	$('#newClinicForm form').on('submit', function(event) {
