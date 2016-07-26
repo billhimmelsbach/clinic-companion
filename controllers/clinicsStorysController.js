@@ -5,11 +5,19 @@
 var db = require('../models');
 
 function create(req, res) {
+  console.log("YAAAY!");
   var newStory = req.body;
   console.log(newStory);
-  db.Story.create(newStory, function (err, newStory) {
-    if (err) {res.sendStatus(404);}
-    res.json(newStory);
+  var clinicId = req.params.clinicId;
+  console.log(clinicId);
+  console.log(newStory);
+  db.Clinic.findById(clinicId, function (err, clinic) {
+    console.log(clinic);
+    
+    db.Story.create(newStory, function (err, newStory) {
+      if (err) {res.sendStatus(404);}
+      res.json(newStory);
+    });
   });
 }
 
@@ -95,7 +103,7 @@ function index(req, res) {
 // export public methods here
 module.exports = {
   index: index,
-  // create: create,
+  create: create,
   // show: show,
   // destroy: destroy,
   // update: update,

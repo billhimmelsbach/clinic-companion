@@ -205,11 +205,9 @@ $(document).ready(function() {
 		var clinicId = $('body #idContainer').data('result-id');
 		console.log(clinicId);
 		// var resultId = $('#resultContainer').data('result-id');
-		var textareaData = $('#storyContentInput').val();
-		var formData = "story_content="+textareaData+'&clinicId='+clinicId;
-		console.log(formData);
-
-		$.post('/api/clinics/:'+clinicId+'/storys?textareaData='+textareaData, function(clinic) {
+		var textareaData = {story_content:$('#storyContentInput').val()};
+		console.log(textareaData);
+		$.post('/api/clinics/'+clinicId+'/storys', textareaData, function(clinic) {
 		});
 		$(this).trigger("reset");
 		$('#modalNewClinic').closeModal();
