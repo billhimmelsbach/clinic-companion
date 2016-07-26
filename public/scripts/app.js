@@ -49,6 +49,24 @@ function renderStorys(storyResult) {
 	// Materialize.showStaggeredList('#staggered-results');
 }
 
+function renderNewStorys(storyResult) {
+	console.log(storyResult);
+	// console.log('rendering album', album);
+	//grabs all the HTML from the template
+	var templateHtml = $('#storys-template').html();
+	console.log(templateHtml);
+	//a function that takes that HTML and compiles it
+	var resultsTemplate = Handlebars.compile(templateHtml);
+	console.log(resultsTemplate);
+	//just the HTML of the {{}}s, takes the album and piles them into the appropriate {{}}s
+	var partialAlbumHtml = resultsTemplate(storyResult);
+	console.log(partialAlbumHtml);
+	//adds to the top of the section
+	$('#storyContent').prepend(partialAlbumHtml);
+	$('.modal-trigger').leanModal();
+	// Materialize.showStaggeredList('#staggered-results');
+}
+
 function renderResultsPage(result) {
 	console.log(result);
 	// console.log('rendering album', album);
@@ -208,9 +226,12 @@ $(document).ready(function() {
 		var textareaData = {story_content:$('#storyContentInput').val()};
 		console.log(textareaData);
 		$.post('/api/clinics/'+clinicId+'/storys', textareaData, function(clinic) {
+			$('#modalNewStory').closeModal();
 		});
 		$(this).trigger("reset");
-		$('#modalNewClinic').closeModal();
+		// setTimeout
+		renderNewStorys(finalStory);
+
 	});
 
 
